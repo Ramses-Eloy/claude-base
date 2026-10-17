@@ -167,8 +167,6 @@ Al empezar en otra máquina: `git pull`, comprobar `gh auth status` y leer el Is
 - **Sin adoptar:**
   - ControlCenter: su `CLAUDE.md` no se sobrescribe y lleva `.env.neon` en el deny.
   - WebSira: usa GitHub; hay que arreglar los `@` y el `.gitignore`.
-  - Nero: sus reglas mandan, salvo el piso de seguridad.
-  - Marca-Kosmos.
 - **Pendientes tuyos:**
   - Revisar en Cloudflare si Workers Builds despliega `main` antes de cualquier push de WebKosmos.
   - Merge y deploy de #7.
