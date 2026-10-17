@@ -89,3 +89,43 @@ Nunca se hacen commits directos a producción. Merge, push y borrar ramas requie
 - **Clases de ataque:** `seguridad/README.md` indica qué clases aplican a cada tipo. Se leen solo cuando la tarea toca servidor, auth, datos, formularios, cabeceras, pagos o dependencias.
 - **Pruebas que intentan romper el sistema:** IDOR, peticiones sin sesión, montos, repeticiones, rate limit y Origin.
 - **Límite:** los permisos de `settings.json` comparan el texto del comando, así que no son una barrera completa. El piso real son las reglas escritas.
+
+## Para Claude Code (uso como referencia)
+
+Si eres un agente y llegaste a este repo para consultar algo, esto es lo que necesitas saber.
+
+- **Qué es este repo.** Una base de reglas y plantillas, no una aplicación: no tiene nada que compilar ni probar, salvo los dos scripts de `_base/`.
+- **Si trabajas en un proyecto dentro de esta carpeta**, las reglas ya te llegan: el `CLAUDE.md` de la raíz se carga solo, y él te dice qué leer en cada caso. No hace falta leer este README.
+- **Si consultas el repo desde fuera**, lee solo lo que responde tu pregunta:
+
+| Quiero saber… | Leer |
+|---|---|
+| Las reglas que siempre aplican | `CLAUDE.md` |
+| Cómo aplicar la base a un proyecto | `_base/adoptar.sh` (encabezado y sección "Revisión") y `_base/plantilla/CLAUDE.md` |
+| Cómo se reparte el trabajo entre agentes | `_base/flujo-equipo.md` y `_base/principios-agentes.md` |
+| Cómo definir un agente | `_base/plantilla/.claude/agents/*.md` y `_base/agentes-opcionales/*.md` (frontmatter `name`, `description`, `tools`, `model`; el `qa` añade `hooks`) |
+| Cómo limitar Bash a un agente | `_base/plantilla/.claude/hooks/qa-bash.sh` y sus casos en `_base/pruebas-qa-bash.sh` |
+| Qué permitir, preguntar o bloquear | `_base/plantilla/.claude/settings.json` |
+| Seguridad de un cambio | `_base/seguridad/README.md`, que indica qué archivos de clase leer según el tipo E/C/S y la tarea |
+| Pruebas, revisión y reporte de cierre | `_base/cierre.md` |
+| Issues, ramas, PRs y modelo de ramas | `_base/github.md` |
+| Calidad, diseño, copy y elección de stack | `_base/calidad.md` |
+| Varias máquinas | `_base/multi-maquina.md` |
+| Qué skill usar | `_base/skills.md` |
+| Contexto e historia de las decisiones | `_base/LEEME.md` (escrito para una persona) |
+
+**Convenciones**
+- `RELLENAR` marca un campo que se adapta al proyecto real; nunca se copia tal cual.
+- Los archivos de `_base/` se leen por demanda. No se agregan `@imports` al `CLAUDE.md`, porque cargarían todo en cada sesión.
+- `VERSION` sube con cada cambio de la base. `adoptar.sh --actualizar` la usa para refrescar los proyectos externos.
+- Los `.sh` van con LF (`.gitattributes`).
+
+**Cómo usar algo de aquí en otro proyecto**
+- Adapta, no copies: el stack, los usuarios, los datos sensibles y el modelo de amenazas son de cada proyecto.
+- Las reglas del proyecto mandan sobre estas, salvo que bajen la seguridad.
+- No sobrescribas un `CLAUDE.md` existente: propón los cambios.
+
+**Si modificas la base**
+- Una regla nueva va al archivo de `_base/` que le corresponde. Al `CLAUDE.md` raíz solo entra lo que tiene que estar siempre cargado; hoy son unos 620 tokens y conviene mantenerlo así.
+- Después de un cambio, corre `bash _base/pruebas-qa-bash.sh` si tocaste el hook, prueba `adoptar.sh` en un proyecto falso (1ª corrida, 2ª corrida y `--actualizar`) y sube `VERSION`.
+- Este README y `_base/LEEME.md` no se importan ni se citan desde ningún `CLAUDE.md`.
