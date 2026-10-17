@@ -152,7 +152,7 @@ Al empezar en otra máquina: `git pull`, comprobar `gh auth status` y leer el Is
 - **Cuándo actualizar las reglas:** cuando un error se repite en dos proyectos o una decisión tuya vale para todos. Una regla nueva va al archivo de `_base/` que corresponde, no al núcleo. Al núcleo solo entra lo que tiene que estar siempre cargado. Después: commit y subir `VERSION`.
 - **Crear un agente adicional:** pídeselo a la sesión principal. Lo propone y tú lo apruebas; vive en el `.claude/agents/` de ese proyecto y se agrega a "Agentes de este proyecto:". Lleva frontmatter `name`, `description`, `tools` y `model`, y su reporte termina en `Bloqueado:` cuando necesita algo de ti.
 - **Moverlo a `agentes-opcionales/`:** cuando lo uses en un segundo proyecto. Se quita lo específico, se dejan los campos RELLENAR y se lista en `flujo-equipo.md`.
-- **Sincronizar entre máquinas (propuesta):** crear un repo privado para `C:\Claude`. Hoy no tiene remoto, y el `.gitignore` ya limita lo versionado a `CLAUDE.md` y `_base/`. En otra máquina: clonarlo como carpeta madre y clonar cada proyecto dentro. Crear ese remoto es una decisión tuya.
+- **Sincronizar entre máquinas:** `C:\Claude` es el repo privado `Ramses-Eloy/claude-base`. El `.gitignore` limita lo versionado a `CLAUDE.md`, `README.md` y `_base/`. En otra máquina: clonarlo como carpeta madre (pasos en el `README.md`) y clonar cada proyecto dentro. Cambiar la base: commit y push con tu confirmación; en las otras máquinas, `git pull`.
 
 ## Estado al 2026-10-16
 
