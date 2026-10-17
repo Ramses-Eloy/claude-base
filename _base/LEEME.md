@@ -156,7 +156,7 @@ Al empezar en otra máquina: `git pull`, comprobar `gh auth status` y leer el Is
 
 ## Estado al 2026-10-16
 
-- **Base:** v1 (pasa a v2 con el modelo de ramas). Es un repo local sin remoto.
+- **Base:** v2, en el repo privado `github.com/Ramses-Eloy/claude-base` (rama `main`).
 - **Adoptados:** WebKosmos (tipo E, modelo a: solo `main`; agentes `architect`, `reviewer` y `qa`). `main` va varios commits por delante de `origin`, sin push. La rama `rate-limit-contacto` está lista y sin merge.
 - **Issues abiertos de WebKosmos** (label `seguridad`):
   - #5 Cabeceras de seguridad y HTTPS obligatorio
