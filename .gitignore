@@ -1,0 +1,6 @@
+# Solo se versionan las reglas base y su README; los proyectos y las carpetas de referencia quedan fuera (cada proyecto tiene su repo).
+/*
+!/.gitignore
+!/CLAUDE.md
+!/README.md
+!/_base/
