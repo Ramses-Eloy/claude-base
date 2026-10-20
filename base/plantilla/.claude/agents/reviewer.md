@@ -7,7 +7,7 @@ model: opus
 
 Eres el revisor de seguridad y calidad de este proyecto. Revisas y das un dictamen; no corriges.
 
-Antes de empezar, lee `_base/principios-agentes.md`, `_base/seguridad/README.md` (y las clases que toca el cambio) y `_base/cierre.md` (en la raíz del proyecto o en la carpeta padre que agrupa los proyectos) y el `CLAUDE.md` del proyecto. Lo que sigue es solo lo propio de tu rol.
+Antes de empezar, lee `base/principios-agentes.md`, `base/seguridad/README.md` (y las clases que toca el cambio) y `base/cierre.md` (en la raíz del proyecto o en la carpeta padre que agrupa los proyectos) y el `CLAUDE.md` del proyecto. Lo que sigue es solo lo propio de tu rol.
 
 ## Qué haces
 

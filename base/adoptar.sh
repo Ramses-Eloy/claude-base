@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Adopta las reglas base en un proyecto. Seguro de repetir: nunca sobrescribe
-# archivos del proyecto; con --actualizar solo refresca su copia de _base/.
-# Solo copia plantilla/; los agentes de _base/agentes-opcionales/ se activan a mano (flujo-equipo.md).
+# archivos del proyecto; con --actualizar solo refresca su copia de base/.
+# Solo copia plantilla/; los agentes de base/agentes-opcionales/ se activan a mano (flujo-equipo.md).
 set -euo pipefail
 
 uso() { echo "Uso: $0 [--actualizar] <ruta-del-proyecto>" >&2; exit 1; }
@@ -45,20 +45,20 @@ done
 echo "Reglas base:"
 if [ $externo = 0 ]; then
   echo "  heredadas de $raiz/CLAUDE.md (no se copian)"
-elif [ -d "$dest/_base" ] && [ ! -f "$dest/_base/VERSION" ]; then
-  echo "  _base/ ya existe y no es de estas reglas: no se toca" >&2
+elif [ -d "$dest/base" ] && [ ! -f "$dest/base/VERSION" ]; then
+  echo "  base/ ya existe y no es de estas reglas: no se toca" >&2
   exit 1
-elif [ -d "$dest/_base" ] && [ $actualizar = 0 ]; then
-  echo "  ya existía  _base/ ($(cat "$dest/_base/VERSION")); usar --actualizar para refrescarla"
+elif [ -d "$dest/base" ] && [ $actualizar = 0 ]; then
+  echo "  ya existía  base/ ($(cat "$dest/base/VERSION")); usar --actualizar para refrescarla"
 else
-  accion=$([ -d "$dest/_base" ] && echo actualizado || echo agregado)
-  mkdir -p "$dest/_base"
-  cp -R "$base/." "$dest/_base/"
-  # Las reglas globales importan @_base/...; dentro de _base/ los imports son relativos a ella.
-  sed 's#^@_base/#@#' "$raiz/CLAUDE.md" > "$dest/_base/global.md"
-  echo "  $accion  _base/ ($(cat "$base/VERSION")) con _base/global.md"
+  accion=$([ -d "$dest/base" ] && echo actualizado || echo agregado)
+  mkdir -p "$dest/base"
+  cp -R "$base/." "$dest/base/"
+  # Las reglas globales importan @base/...; dentro de base/ los imports son relativos a ella.
+  sed 's#^@base/#@#' "$raiz/CLAUDE.md" > "$dest/base/global.md"
+  echo "  $accion  base/ ($(cat "$base/VERSION")) con base/global.md"
   if [ $claude_nuevo = 1 ]; then
-    { echo '@_base/global.md'; echo; cat "$dest/CLAUDE.md"; } > "$dest/CLAUDE.md.tmp"
+    { echo '@base/global.md'; echo; cat "$dest/CLAUDE.md"; } > "$dest/CLAUDE.md.tmp"
     mv "$dest/CLAUDE.md.tmp" "$dest/CLAUDE.md"
   fi
 fi
@@ -72,8 +72,8 @@ grep -q 'RELLENAR' "$c" && aviso "CLAUDE.md tiene campos sin completar (RELLENAR
 grep -q 'Skills de este proyecto:' "$c" || aviso "CLAUDE.md no tiene la línea 'Skills de este proyecto: ...'"
 grep -q '^Ramas:' "$c" || aviso "CLAUDE.md no tiene la línea 'Ramas: ...': proponer un modelo (github.md → Modelo de ramas) y esperar decisión"
 grep -qE '^[A-Za-z0-9_./-]+\.md[[:space:]]*$' "$c" && aviso "CLAUDE.md tiene una ruta .md suelta: ¿falta la @ del import?"
-if [ $externo = 1 ] && ! grep -q '^@_base/global.md' "$c"; then
-  aviso "CLAUDE.md no importa las reglas base: agregar '@_base/global.md' al inicio"
+if [ $externo = 1 ] && ! grep -q '^@base/global.md' "$c"; then
+  aviso "CLAUDE.md no importa las reglas base: agregar '@base/global.md' al inicio"
 fi
 grep -qE '^/?\.env\*?[[:space:]]*$' "$dest/.gitignore" || aviso ".gitignore no excluye .env"
 grep -q '\.env' "$dest/.claude/settings.json" || aviso ".claude/settings.json no bloquea la lectura de .env*"

@@ -4,34 +4,34 @@ Documento para ti, no para los agentes. Ningún `CLAUDE.md` lo importa ni lo cit
 
 ## Qué es
 
-`C:\Claude` es la carpeta madre de todos tus proyectos. Su `CLAUDE.md` contiene las reglas globales. Claude Code lo carga en cualquier subcarpeta porque lee los `CLAUDE.md` subiendo por el árbol, así que todo agente que abras en un proyecto de aquí dentro las hereda. `_base/` guarda el resto de las reglas, que se leen solo cuando hacen falta, la plantilla para proyectos nuevos y el script de adopción.
+`C:\Claude` es la carpeta madre de todos tus proyectos. Su `CLAUDE.md` contiene las reglas globales. Claude Code lo carga en cualquier subcarpeta porque lee los `CLAUDE.md` subiendo por el árbol, así que todo agente que abras en un proyecto de aquí dentro las hereda. `base/` guarda el resto de las reglas, que se leen solo cuando hacen falta, la plantilla para proyectos nuevos y el script de adopción.
 
 | Archivo | Para qué |
 |---|---|
 | `CLAUDE.md` (raíz) | Núcleo que siempre está cargado: arranque, piso crítico de seguridad y qué leer en cada caso. |
-| `_base/calidad.md` | Calidad de código, diseño y copy sin genéricos, cuándo preguntar, elección de stack y eficiencia de lectura. |
-| `_base/cierre.md` | Pruebas, pruebas que intentan romper el sistema, revisión final y formato del reporte. |
-| `_base/flujo-equipo.md` | Equipo de agentes, tamaños de tarea, quién implementa, orden de pasos y agentes adicionales. |
-| `_base/github.md` | Issues, ramas, PRs, labels, comentarios con evidencia y modelo de ramas. |
-| `_base/multi-maquina.md` | Trabajar en varias máquinas: qué viaja con el repo y qué no. |
-| `_base/skills.md` | Qué skill usar en cada tarea (una sola por tarea). |
-| `_base/principios-agentes.md` | Los 9 principios que leen los subagentes. |
-| `_base/seguridad/` | `README.md`, que indica qué clase de ataque leer según el tipo de proyecto y la tarea, más un archivo por clase. |
-| `_base/plantilla/` | Lo que se copia a cada proyecto: `CLAUDE.md` con campos RELLENAR, `.claude/settings.json`, los agentes `architect`, `reviewer` y `qa`, el hook del qa, `.gitignore`, `.env.example` y `.gitattributes`. |
-| `_base/agentes-opcionales/` | `dba`, `backend` y `frontend`. Se activan a mano, solo cuando el proyecto los necesita. |
-| `_base/adoptar.sh` | Copia lo que le falta a un proyecto y revisa su configuración. |
-| `_base/pruebas-qa-bash.sh` | 22 casos para comprobar el hook del qa. |
-| `_base/VERSION` | Versión de la base. Sirve para `adoptar.sh --actualizar` en proyectos que están fuera de `C:\Claude`. |
-| `_base/LEEME.md` | Este archivo. |
+| `base/calidad.md` | Calidad de código, diseño y copy sin genéricos, cuándo preguntar, elección de stack y eficiencia de lectura. |
+| `base/cierre.md` | Pruebas, pruebas que intentan romper el sistema, revisión final y formato del reporte. |
+| `base/flujo-equipo.md` | Equipo de agentes, tamaños de tarea, quién implementa, orden de pasos y agentes adicionales. |
+| `base/github.md` | Issues, ramas, PRs, labels, comentarios con evidencia y modelo de ramas. |
+| `base/multi-maquina.md` | Trabajar en varias máquinas: qué viaja con el repo y qué no. |
+| `base/skills.md` | Qué skill usar en cada tarea (una sola por tarea). |
+| `base/principios-agentes.md` | Los 9 principios que leen los subagentes. |
+| `base/seguridad/` | `README.md`, que indica qué clase de ataque leer según el tipo de proyecto y la tarea, más un archivo por clase. |
+| `base/plantilla/` | Lo que se copia a cada proyecto: `CLAUDE.md` con campos RELLENAR, `.claude/settings.json`, los agentes `architect`, `reviewer` y `qa`, el hook del qa, `.gitignore`, `.env.example` y `.gitattributes`. |
+| `base/agentes-opcionales/` | `dba`, `backend` y `frontend`. Se activan a mano, solo cuando el proyecto los necesita. |
+| `base/adoptar.sh` | Copia lo que le falta a un proyecto y revisa su configuración. |
+| `base/pruebas-qa-bash.sh` | 22 casos para comprobar el hook del qa. |
+| `base/VERSION` | Versión de la base. Sirve para `adoptar.sh --actualizar` en proyectos que están fuera de `C:\Claude`. |
+| `base/LEEME.md` | Este archivo. |
 
-La carpeta `C:\Claude` es un repo git local: solo versiona `CLAUDE.md`, `_base/` y `.gitignore`. Cada proyecto tiene su propio repo.
+La carpeta `C:\Claude` es un repo git local: solo versiona `CLAUDE.md`, `base/` y `.gitignore`. Cada proyecto tiene su propio repo.
 
 ## El día a día
 
 1. Crea o copia el proyecto dentro de `C:\Claude\<Proyecto>` y abre Claude Code ahí.
 2. El agente arranca solo:
    - **Lee el `CLAUDE.md` del proyecto.** Si no existe, lo crea desde la plantilla adaptándolo al proyecto real. Si existe, no lo sobrescribe: propone cambios.
-   - **Si el proyecto ya existía, ejecuta `_base/adoptar.sh`** y te reporta lo que falta antes de tocar código.
+   - **Si el proyecto ya existía, ejecuta `base/adoptar.sh`** y te reporta lo que falta antes de tocar código.
    - **Completa el modelo de amenazas:** el tipo E/C/S, activos, atacantes, vectores y controles.
    - **Si no indicaste el stack, conversa contigo** y te da 2 o 3 opciones. No crea nada hasta que decidas.
    - **Si no hay línea `Ramas:`**, te propone un modelo de ramas y espera tu decisión.
@@ -58,7 +58,7 @@ La sesión principal, que es la que abres tú, hace de orquestadora y de product
 
 - **Pruebas:** las escribe quien implementa y las corre el `qa`. Hay como máximo 2 ciclos de qa y reviewer. Si siguen fallando, la sesión principal te pregunta.
 - **Comunicación:** los subagentes reportan a la sesión principal y, en tareas medianas o grandes, ella publica los dictámenes y la evidencia en el Issue. Si un subagente necesita algo tuyo, termina con `Bloqueado: <pregunta>`.
-- **Agentes adicionales:** solo se crean con tu aprobación y en el `.claude/agents/` de ese proyecto, y se listan en la línea "Agentes de este proyecto:". Si un agente sirve para varios proyectos, se generaliza y se mueve a `_base/agentes-opcionales/`.
+- **Agentes adicionales:** solo se crean con tu aprobación y en el `.claude/agents/` de ese proyecto, y se listan en la línea "Agentes de este proyecto:". Si un agente sirve para varios proyectos, se generaliza y se mueve a `base/agentes-opcionales/`.
 
 ## GitHub
 
@@ -111,7 +111,7 @@ La razón: todo lo que se carga al inicio se paga en cada turno y diluye la aten
 
 | Viaja con el repo | Se repite en cada máquina |
 |---|---|
-| `CLAUDE.md`, `_base/` y, en cada proyecto, `.claude/agents/`, `.claude/hooks/`, `.claude/settings.json`, `.gitattributes` y `.env.example` | `gh auth login` (o el token de Forgejo) |
+| `CLAUDE.md`, `base/` y, en cada proyecto, `.claude/agents/`, `.claude/hooks/`, `.claude/settings.json`, `.gitattributes` y `.env.example` | `gh auth login` (o el token de Forgejo) |
 | Issues, ramas y PRs, que viven en el remoto | Aceptar la confianza de la carpeta en Claude Code (sin ella no corren el hook del qa ni el `allow`) |
 | | `~/.claude/` (configuración personal, memoria y plugins de skills) |
 | | Los `.env` reales y `.dev.vars`, que nunca van al repo |
@@ -122,9 +122,9 @@ Al empezar en otra máquina: `git pull`, comprobar `gh auth status` y leer el Is
 ## Adoptar proyectos y actualizar la base
 
 - **Nuevo, dentro de `C:\Claude`:** abre Claude Code en la carpeta. El agente crea el `CLAUDE.md` desde la plantilla y te pregunta el stack y el modelo de ramas.
-- **Existente, dentro de `C:\Claude`:** ejecuta `bash _base/adoptar.sh <Proyecto>`. Copia solo los archivos que faltan, nunca sobrescribe ni copia los agentes opcionales, e imprime una lista de avisos (RELLENAR, `.env`, hook, scripts, eol, remoto, `Ramas:`…). Las reglas se heredan del `CLAUDE.md` de la raíz.
-- **Fuera de `C:\Claude`:** `adoptar.sh` copia también `_base/` dentro del proyecto con un `_base/global.md`. Si el `CLAUDE.md` es nuevo, le agrega `@_base/global.md` al inicio.
-- **Actualizar la base en un proyecto externo:** `bash _base/adoptar.sh --actualizar <ruta>`. Refresca su `_base/` solo si encuentra un `VERSION` ahí; si `_base/` no es de estas reglas, no la toca. Sube `VERSION` (v1, v2…) cada vez que cambies la base, para saber qué versión tiene cada proyecto.
+- **Existente, dentro de `C:\Claude`:** ejecuta `bash base/adoptar.sh <Proyecto>`. Copia solo los archivos que faltan, nunca sobrescribe ni copia los agentes opcionales, e imprime una lista de avisos (RELLENAR, `.env`, hook, scripts, eol, remoto, `Ramas:`…). Las reglas se heredan del `CLAUDE.md` de la raíz.
+- **Fuera de `C:\Claude`:** `adoptar.sh` copia también `base/` dentro del proyecto con un `base/global.md`. Si el `CLAUDE.md` es nuevo, le agrega `@base/global.md` al inicio.
+- **Actualizar la base en un proyecto externo:** `bash base/adoptar.sh --actualizar <ruta>`. Refresca su `base/` solo si encuentra un `VERSION` ahí; si `base/` no es de estas reglas, no la toca. Sube `VERSION` (v1, v2…) cada vez que cambies la base, para saber qué versión tiene cada proyecto.
 
 ## Permisos y hooks
 
@@ -149,10 +149,10 @@ Al empezar en otra máquina: `git pull`, comprobar `gh auth status` y leer el Is
 
 ## Mantener la base
 
-- **Cuándo actualizar las reglas:** cuando un error se repite en dos proyectos o una decisión tuya vale para todos. Una regla nueva va al archivo de `_base/` que corresponde, no al núcleo. Al núcleo solo entra lo que tiene que estar siempre cargado. Después: commit y subir `VERSION`.
+- **Cuándo actualizar las reglas:** cuando un error se repite en dos proyectos o una decisión tuya vale para todos. Una regla nueva va al archivo de `base/` que corresponde, no al núcleo. Al núcleo solo entra lo que tiene que estar siempre cargado. Después: commit y subir `VERSION`.
 - **Crear un agente adicional:** pídeselo a la sesión principal. Lo propone y tú lo apruebas; vive en el `.claude/agents/` de ese proyecto y se agrega a "Agentes de este proyecto:". Lleva frontmatter `name`, `description`, `tools` y `model`, y su reporte termina en `Bloqueado:` cuando necesita algo de ti.
 - **Moverlo a `agentes-opcionales/`:** cuando lo uses en un segundo proyecto. Se quita lo específico, se dejan los campos RELLENAR y se lista en `flujo-equipo.md`.
-- **Sincronizar entre máquinas:** `C:\Claude` es el repo privado `Ramses-Eloy/claude-base`. El `.gitignore` limita lo versionado a `CLAUDE.md`, `README.md` y `_base/`. En otra máquina: clonarlo como carpeta madre (pasos en el `README.md`) y clonar cada proyecto dentro. Cambiar la base: commit y push con tu confirmación; en las otras máquinas, `git pull`.
+- **Sincronizar entre máquinas:** `C:\Claude` es el repo privado `Ramses-Eloy/claude-base`. El `.gitignore` limita lo versionado a `CLAUDE.md`, `README.md` y `base/`. En otra máquina: clonarlo como carpeta madre (pasos en el `README.md`) y clonar cada proyecto dentro. Cambiar la base: commit y push con tu confirmación; en las otras máquinas, `git pull`.
 
 ## Estado al 2026-10-16
 

@@ -17,7 +17,7 @@
 - Build: <!-- RELLENAR -->
 - Lint/typecheck: <!-- RELLENAR -->
 
-Ramas: <!-- RELLENAR: modelo de _base/github.md → Modelo de ramas y nombres; lo decido yo, no el agente -->. Deploy automático desde: <!-- RELLENAR: rama o ninguna -->
+Ramas: <!-- RELLENAR: modelo de base/github.md → Modelo de ramas y nombres; lo decido yo, no el agente -->. Deploy automático desde: <!-- RELLENAR: rama o ninguna -->
 
 ## Datos sensibles
 
@@ -40,7 +40,7 @@ Ramas: <!-- RELLENAR: modelo de _base/github.md → Modelo de ramas y nombres; l
 
 <!-- RELLENAR: público, tono de voz, qué debe transmitir, qué NO debe parecer (por ejemplo: "no otro SaaS azul con gradientes"), referencias reales de marca. -->
 
-Skills de este proyecto: <!-- RELLENAR: subconjunto de _base/skills.md que aplica -->
+Skills de este proyecto: <!-- RELLENAR: subconjunto de base/skills.md que aplica -->
 
 Agentes de este proyecto: <!-- RELLENAR: los de .claude/agents/ (architect, reviewer, qa y los opcionales o adicionales aprobados) -->
 

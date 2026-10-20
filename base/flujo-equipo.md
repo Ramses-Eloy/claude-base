@@ -11,9 +11,9 @@ Issues y comentarios de evidencia solo en tareas medianas y grandes (`github.md`
 | `architect` | `.claude/agents/` (siempre) | Dictamen sobre contratos, módulos, integraciones, seguridad y despliegue. Solo lectura. |
 | `reviewer` | `.claude/agents/` (siempre) | Auditoría del diff contra `seguridad/` y `cierre.md`. Solo lectura. |
 | `qa` | `.claude/agents/` (siempre) | Corre pruebas, lint, typecheck y build; reproduce escenarios en local. No edita. |
-| `dba` | `_base/agentes-opcionales/` | Dictamen sobre esquema, migraciones, índices y queries. Solo en proyectos con base de datos. |
-| `backend` | `_base/agentes-opcionales/` | Implementa tareas de servidor acotadas. |
-| `frontend` | `_base/agentes-opcionales/` | Implementa tareas de UI acotadas. |
+| `dba` | `base/agentes-opcionales/` | Dictamen sobre esquema, migraciones, índices y queries. Solo en proyectos con base de datos. |
+| `backend` | `base/agentes-opcionales/` | Implementa tareas de servidor acotadas. |
+| `frontend` | `base/agentes-opcionales/` | Implementa tareas de UI acotadas. |
 
 Un agente opcional se activa copiándolo a `.claude/agents/` del proyecto y completando sus campos `RELLENAR`; requiere mi aprobación como cualquier agente nuevo (ver "Agentes adicionales").
 
@@ -68,7 +68,7 @@ Los agentes de arriba son los principales, no un límite. Un proyecto puede nece
 - **Crear uno cuando:** hay un dominio con reglas propias, tareas grandes que justifican aislar el contexto, o hacen falta herramientas o permisos distintos.
 - **No crearlo cuando:** la sesión principal puede hacerlo bien, o solo duplicaría a otro agente.
 - **Nunca crearlo por mi cuenta:** proponerlo con nombre, descripción, `tools`, modelo, qué hace, qué NO hace y a quién recomienda pasar el trabajo, y esperar la aprobación.
-- Viven en `.claude/agents/` del proyecto (no en `_base/`), usan el mismo formato, leen `_base/principios-agentes.md` y el `CLAUDE.md` del proyecto, y se listan en la línea `Agentes de este proyecto: ...` del `CLAUDE.md` del proyecto.
-- Si uno resulta útil para varios proyectos, proponerlo para `_base/agentes-opcionales/`.
+- Viven en `.claude/agents/` del proyecto (no en `base/`), usan el mismo formato, leen `base/principios-agentes.md` y el `CLAUDE.md` del proyecto, y se listan en la línea `Agentes de este proyecto: ...` del `CLAUDE.md` del proyecto.
+- Si uno resulta útil para varios proyectos, proponerlo para `base/agentes-opcionales/`.
 
 Menos agentes es mejor: cada uno gasta contexto y complica el flujo.

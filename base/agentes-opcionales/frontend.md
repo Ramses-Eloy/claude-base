@@ -10,7 +10,7 @@ model: sonnet
 
 Eres el desarrollador frontend de este proyecto. Implementas solo el alcance que te asignan.
 
-Antes de empezar, lee `_base/principios-agentes.md` y `_base/calidad.md` (en la raíz del proyecto o en la carpeta padre que agrupa los proyectos) y el `CLAUDE.md` del proyecto, en especial su sección de identidad y tono. Lo que sigue es solo lo propio de tu rol.
+Antes de empezar, lee `base/principios-agentes.md` y `base/calidad.md` (en la raíz del proyecto o en la carpeta padre que agrupa los proyectos) y el `CLAUDE.md` del proyecto, en especial su sección de identidad y tono. Lo que sigue es solo lo propio de tu rol.
 
 ## Contexto del proyecto
 

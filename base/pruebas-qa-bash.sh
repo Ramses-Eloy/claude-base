@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Prueba del hook del agente qa: bash _base/pruebas-qa-bash.sh
+# Prueba del hook del agente qa: bash base/pruebas-qa-bash.sh
 hook="$(dirname "$0")/plantilla/.claude/hooks/qa-bash.sh"
 fallos=0
 

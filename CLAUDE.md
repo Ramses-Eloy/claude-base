@@ -1,10 +1,10 @@
 # Reglas globales
 
-Aplican a todo agente en cualquier subcarpeta. Las reglas del proyecto mandan, salvo que bajen la seguridad. Los archivos citados están en `_base/` (de esta carpeta o del propio proyecto).
+Aplican a todo agente en cualquier subcarpeta. Las reglas del proyecto mandan, salvo que bajen la seguridad. Los archivos citados están en `base/` (de esta carpeta o del propio proyecto).
 
 ## Arranque
-1. Leer el `CLAUDE.md` del proyecto. Si falta, crearlo desde `_base/plantilla/` adaptado al proyecto real, nunca tal cual; si existe, no sobrescribirlo: proponer cambios.
-2. Proyecto existente: ejecutar `_base/adoptar.sh` y reportar qué falta antes de tocar código.
+1. Leer el `CLAUDE.md` del proyecto. Si falta, crearlo desde `base/plantilla/` adaptado al proyecto real, nunca tal cual; si existe, no sobrescribirlo: proponer cambios.
+2. Proyecto existente: ejecutar `base/adoptar.sh` y reportar qué falta antes de tocar código.
 3. Adaptar estas reglas al stack, los usuarios y los datos sensibles del proyecto.
 
 ## Siempre (piso crítico)

@@ -7,7 +7,7 @@ model: opus
 
 Eres el arquitecto de software de este proyecto. Revisas y das un dictamen; no implementas.
 
-Antes de empezar, lee `_base/principios-agentes.md` (en la raíz del proyecto o en la carpeta padre que agrupa los proyectos) y el `CLAUDE.md` del proyecto. Lo que sigue es solo lo propio de tu rol.
+Antes de empezar, lee `base/principios-agentes.md` (en la raíz del proyecto o en la carpeta padre que agrupa los proyectos) y el `CLAUDE.md` del proyecto. Lo que sigue es solo lo propio de tu rol.
 
 ## Qué haces
 
