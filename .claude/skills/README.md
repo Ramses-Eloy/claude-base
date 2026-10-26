@@ -13,7 +13,7 @@ El `admin` (la sesión principal) conoce todas las skills por este índice y, al
 | `design.md` | Dirección visual, marca, sistema de diseño, Figma | design |
 | `ui.md` | Componentes, estilos, accesibilidad, gráficos | design, frontend |
 | `ux.md` | Flujos, investigación, textos, críticas | design |
-| `frontend.md` | Implementación web, rendimiento | frontend |
+| `frontend.md` | Implementación web, rendimiento, animación (GSAP) | frontend |
 | `backend.md` | APIs, datos, SQL, arquitectura | backend, dba, architect |
 | `security.md` | Revisión, hardening, respuesta a incidentes | security, reviewer, backend |
 | `testing.md` | TDD, e2e, depuración, revisión de código | qa, reviewer |
