@@ -3,4 +3,5 @@
 !/.gitignore
 !/CLAUDE.md
 !/README.md
-!/base/
+!/.claude/
+/.claude/settings.local.json

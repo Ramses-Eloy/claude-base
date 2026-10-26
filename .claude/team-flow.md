@@ -1,21 +1,26 @@
 # Flujo del equipo de agentes
 
-La sesión principal es el orquestador y el product owner: lee el contexto, define alcance y criterios de aceptación, pregunta lo que falte, pide dictámenes, implementa o delega, pasa por `qa` y `reviewer`, corrige y reporta. Los subagentes no lanzan otros subagentes.
+La sesión principal es el `admin`: lee el contexto, define alcance y criterios de aceptación, pregunta lo que falte, decide qué agente se invoca y cuándo, pide dictámenes, implementa o delega, pasa por `qa` y `reviewer`, corrige y reporta. Los subagentes no lanzan otros subagentes: solo actúan cuando el `admin` los invoca, y proponen skills en su reporte (`skills/README.md`) sin cargarlas.
 
 Issues y comentarios de evidencia solo en tareas medianas y grandes (`github.md`); en triviales y pequeñas, la conversación.
 
-## Agentes principales
+## Agentes
 
-| Agente | Dónde | Hace |
+Todos viven en `.claude/agents/`. Un proyecto recibe `architect`, `reviewer` y `qa` con `adopt.sh`; el resto lo pide el `admin` con `--agentes` o copiándolo (los campos `RELLENAR` de `backend` y `frontend` se completan con el stack real).
+
+| Agente | Hace | Cuándo lo invoca el admin |
 |---|---|---|
-| `architect` | `.claude/agents/` (siempre) | Dictamen sobre contratos, módulos, integraciones, seguridad y despliegue. Solo lectura. |
-| `reviewer` | `.claude/agents/` (siempre) | Auditoría del diff contra `seguridad/` y `cierre.md`. Solo lectura. |
-| `qa` | `.claude/agents/` (siempre) | Corre pruebas, lint, typecheck y build; reproduce escenarios en local. No edita. |
-| `dba` | `base/agentes-opcionales/` | Dictamen sobre esquema, migraciones, índices y queries. Solo en proyectos con base de datos. |
-| `backend` | `base/agentes-opcionales/` | Implementa tareas de servidor acotadas. |
-| `frontend` | `base/agentes-opcionales/` | Implementa tareas de UI acotadas. |
+| `architect` | Dictamen sobre contratos, módulos, integraciones y arquitectura. Solo lectura. | Cambios entre módulos o decisiones técnicas. |
+| `reviewer` | Auditoría del diff contra `security/` y `closing.md`. Solo lectura. | Antes de cerrar un cambio de seguridad, datos o permisos. |
+| `qa` | Corre pruebas, lint, typecheck y build; reproduce escenarios en local. No edita. | Después de implementar. |
+| `design` | Dictamen UX/UI, sistema de diseño y accesibilidad. Solo lectura. | Pantallas, flujos o componentes nuevos. |
+| `security` | Modelo de amenazas y auditoría de un área. Solo lectura. | Auth, permisos, datos, pagos o dependencias nuevas. |
+| `deploy` | Dictamen de CI/CD, versión y si algo está listo para desplegar. Nunca despliega. | Antes de un merge a rama con deploy o de una versión. |
+| `dba` | Dictamen sobre esquema, migraciones, índices y queries. Solo lectura. | Antes de cualquier cambio de esquema. |
+| `backend` | Implementa tareas de servidor acotadas. | Tareas grandes o que tocan varias áreas. |
+| `frontend` | Implementa tareas de UI acotadas. | Tareas grandes o que tocan varias áreas. |
 
-Un agente opcional se activa copiándolo a `.claude/agents/` del proyecto y completando sus campos `RELLENAR`; requiere mi aprobación como cualquier agente nuevo (ver "Agentes adicionales").
+Un agente nuevo requiere mi aprobación (ver "Agentes adicionales").
 
 ## Nivel según la tarea
 
@@ -42,7 +47,7 @@ Un agente opcional se activa copiándolo a `.claude/agents/` del proyecto y comp
 5. `qa` corre la verificación.
 6. `reviewer` audita el diff (pasarle la lista de archivos o el diff).
 7. Corregir y repetir 5–6, como máximo 2 ciclos; si no converge, preguntarme.
-8. Reporte de cierre (`cierre.md`); en tareas medianas o grandes, PR que cierra el Issue.
+8. Reporte de cierre (`closing.md`); en tareas medianas o grandes, PR que cierra el Issue.
 
 ## Comunicación
 
@@ -63,12 +68,12 @@ Un agente opcional se activa copiándolo a `.claude/agents/` del proyecto y comp
 
 ## Agentes adicionales por proyecto
 
-Los agentes de arriba son los principales, no un límite. Un proyecto puede necesitar otros, por ejemplo: landing/contenido, devops/despliegue, seguridad, integraciones, datos/analítica, móvil o documentación.
+Los 9 agentes no son un límite. Un proyecto puede necesitar otros, por ejemplo: landing/contenido, integraciones, datos/analítica, móvil o documentación.
 
 - **Crear uno cuando:** hay un dominio con reglas propias, tareas grandes que justifican aislar el contexto, o hacen falta herramientas o permisos distintos.
 - **No crearlo cuando:** la sesión principal puede hacerlo bien, o solo duplicaría a otro agente.
 - **Nunca crearlo por mi cuenta:** proponerlo con nombre, descripción, `tools`, modelo, qué hace, qué NO hace y a quién recomienda pasar el trabajo, y esperar la aprobación.
-- Viven en `.claude/agents/` del proyecto (no en `base/`), usan el mismo formato, leen `base/principios-agentes.md` y el `CLAUDE.md` del proyecto, y se listan en la línea `Agentes de este proyecto: ...` del `CLAUDE.md` del proyecto.
-- Si uno resulta útil para varios proyectos, proponerlo para `base/agentes-opcionales/`.
+- Viven en `.claude/agents/` del proyecto (no en `.claude/`), usan el mismo formato, leen `.claude/agent-principles.md` y el `CLAUDE.md` del proyecto, y se listan en la línea `Agentes de este proyecto: ...` del `CLAUDE.md` del proyecto.
+- Si uno resulta útil para varios proyectos, proponerlo para `.claude/agents/`.
 
 Menos agentes es mejor: cada uno gasta contexto y complica el flujo.

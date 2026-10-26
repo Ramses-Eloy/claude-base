@@ -25,14 +25,14 @@ Si el proyecto no tiene runner de pruebas, el `qa` las reproduce con comandos do
 
 Antes de dar algo por terminado, revisar el diff contra la lista siguiente. La hace el `reviewer` cuando el cambio toca seguridad, datos o permisos; si no, la sesión principal.
 
-- [ ] Las clases de `seguridad/` que toca el cambio.
+- [ ] Las clases de `security/` que toca el cambio.
 - [ ] Datos expuestos: campos de más en respuestas, logs, URLs, errores.
 - [ ] Validaciones en el servidor para toda entrada nueva.
 - [ ] Permisos entre usuarios/tenants verificados en el backend.
 - [ ] Manejo de errores: sin fallas silenciosas y sin detalles internos al cliente.
 - [ ] Secretos en el diff, incluidos archivos de configuración y ejemplos.
 - [ ] Dependencias nuevas justificadas y sin vulnerabilidades conocidas.
-- [ ] Diseño o copy genérico (ver `calidad.md`).
+- [ ] Diseño o copy genérico (ver `quality.md`).
 
 ## Reporte
 

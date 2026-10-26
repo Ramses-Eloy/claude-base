@@ -52,7 +52,7 @@ Reglas comunes:
 
 ## Labels
 
-Solo estos, y solo si ya existen en el repo (`gh label list`): `feature`, `bug`, `docs`, `chore`, `seguridad`, `bloqueado`. No inventar otros. Crear un label, aunque sea de esta lista, requiere mi aprobación.
+Solo estos, y solo si ya existen en el repo (`gh label list`): `feature`, `bug`, `docs`, `chore`, `security`, `bloqueado`. No inventar otros. Crear un label, aunque sea de esta lista, requiere mi aprobación.
 
 ## Comentarios con evidencia
 

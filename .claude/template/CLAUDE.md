@@ -8,7 +8,7 @@
 
 ## Stack y por qué
 
-<!-- RELLENAR: framework, lenguaje, base de datos, hosting, y la razón de cada elección. Si el stack no está decidido, no rellenar: seguir calidad.md (conversar y proponer opciones). -->
+<!-- RELLENAR: framework, lenguaje, base de datos, hosting, y la razón de cada elección. Si el stack no está decidido, no rellenar: seguir quality.md (conversar y proponer opciones). -->
 
 ## Comandos
 
@@ -17,7 +17,7 @@
 - Build: <!-- RELLENAR -->
 - Lint/typecheck: <!-- RELLENAR -->
 
-Ramas: <!-- RELLENAR: modelo de base/github.md → Modelo de ramas y nombres; lo decido yo, no el agente -->. Deploy automático desde: <!-- RELLENAR: rama o ninguna -->
+Ramas: <!-- RELLENAR: modelo de .claude/github.md → Modelo de ramas y nombres; lo decido yo, no el agente -->. Deploy automático desde: <!-- RELLENAR: rama o ninguna -->
 
 ## Datos sensibles
 
@@ -29,10 +29,10 @@ Ramas: <!-- RELLENAR: modelo de base/github.md → Modelo de ramas y nombres; lo
 
 ## Modelo de amenazas
 
-- Tipo (seguridad/README.md): <!-- RELLENAR: E / C / S -->
+- Tipo (security/README.md): <!-- RELLENAR: E / C / S -->
 - Activos a proteger: <!-- RELLENAR: datos, cuentas, dinero, reputación, cuotas de servicios (correo, IA) -->
 - Quién atacaría y para qué: <!-- RELLENAR: bots de spam, robo de cuentas, otro tenant, usuario interno -->
-- Vectores probables: <!-- RELLENAR: clases de seguridad/ que aplican, con el endpoint o flujo concreto -->
+- Vectores probables: <!-- RELLENAR: clases de security/ que aplican, con el endpoint o flujo concreto -->
 - Controles existentes: <!-- RELLENAR: control → archivo:línea -->
 - Controles pendientes: <!-- RELLENAR: control → Issue propuesto (label seguridad) -->
 
@@ -40,9 +40,9 @@ Ramas: <!-- RELLENAR: modelo de base/github.md → Modelo de ramas y nombres; lo
 
 <!-- RELLENAR: público, tono de voz, qué debe transmitir, qué NO debe parecer (por ejemplo: "no otro SaaS azul con gradientes"), referencias reales de marca. -->
 
-Skills de este proyecto: <!-- RELLENAR: subconjunto de base/skills.md que aplica -->
+Skills de este proyecto: <!-- RELLENAR: subconjunto de .claude/skills/README.md que aplica -->
 
-Agentes de este proyecto: <!-- RELLENAR: los de .claude/agents/ (architect, reviewer, qa y los opcionales o adicionales aprobados) -->
+Agentes de este proyecto: <!-- RELLENAR: los de .claude/agents/ (architect, reviewer, qa y los que el admin pida) -->
 
 ## Reglas específicas
 

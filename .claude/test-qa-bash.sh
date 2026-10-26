@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Prueba del hook del agente qa: bash base/pruebas-qa-bash.sh
-hook="$(dirname "$0")/plantilla/.claude/hooks/qa-bash.sh"
+# Prueba del hook del agente qa: bash .claude/test-qa-bash.sh
+hook="$(dirname "$0")/template/.claude/hooks/qa-bash.sh"
 fallos=0
 
 caso() { # $1 código esperado (0 pasa, 2 bloquea), $2 comando
