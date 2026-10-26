@@ -11,3 +11,12 @@
 | Aplicar un tema a un artefacto | `anthropic-skills:theme-factory` |
 | Trabajo en Figma | `figma:figma-use`, `figma:figma-generate-design`, `figma:figma-generate-library`, `figma:figma-design-to-code`, `figma:figma-code-connect` |
 | Trabajo en Canva | `canva:edit-design`, `canva:bulk-create`, `canva:brand-check` |
+
+## Por instalar (las ejecuta el usuario)
+
+| Cuándo | Skill | Instalación |
+|---|---|---|
+| Página o pantalla nueva con dirección de arte, sin look genérico; revisión con captura | `design-taste-frontend` (taste-skill) | `npx skills add Leonxlnx/taste-skill` |
+| Acabado de interfaces estilo Apple (Emil Kowalski) | `apple-design` | instrucciones en https://www.ui-skills.com/skills/emilkowalski/apple-design |
+
+`impeccable:impeccable` ya está instalado como plugin; no hace falta `npx impeccable install`.

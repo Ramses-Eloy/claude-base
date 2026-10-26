@@ -9,3 +9,5 @@
 | Gráficos, KPIs y dashboards | `dataviz`, `data:create-viz`, `data:build-dashboard` |
 | Pantalla compleja con React y shadcn (artefacto) | `anthropic-skills:web-artifacts-builder` |
 | Pasar un diseño de Figma a código | `figma:figma-design-to-code` |
+
+Nuevas (ver `design.md` para instalarlas): `design-taste-frontend` para pantallas de app y dashboards, `apple-design` para el acabado.
