@@ -68,6 +68,7 @@ else
     cp -R "$p" "$dest/.claude/"
   done
   # Las reglas globales importan @.claude/...; dentro de .claude/ los imports son relativos a ella.
+  rm -rf "$dest/.claude/skills/design-taste-frontend" # skill de terceros por máquina, no viaja
   sed 's#^@.claude/#@#' "$raiz/CLAUDE.md" > "$dest/.claude/global.md"
   echo "  $accion  .claude/ ($(cat "$base/VERSION")) con .claude/global.md"
   if [ $claude_nuevo = 1 ]; then

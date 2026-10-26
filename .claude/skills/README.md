@@ -28,7 +28,7 @@ Al delegar, el `admin` escribe en el encargo: "usa `<skill>`". Si el agente no p
 | Agente | Skills a pedirle | Tema |
 |---|---|---|
 | `architect` | `agent-skills:spec-driven-development`, `agent-skills:documentation-and-adrs`, `agent-skills:api-and-interface-design` | `process.md`, `backend.md` |
-| `design` | `impeccable:impeccable`, `design-taste-frontend` (por instalar), `ui-ux-pro-max:ui-ux-pro-max`, `design:design-system`, `design:accessibility-review`, `design:ux-copy` | `design.md`, `ui.md`, `ux.md` |
+| `design` | `impeccable:impeccable`, `design-taste-frontend`, `ui-ux-pro-max:ui-ux-pro-max`, `design:design-system`, `design:accessibility-review`, `design:ux-copy` | `design.md`, `ui.md`, `ux.md` |
 | `frontend` | `agent-skills:frontend-ui-engineering`, `everything-claude-code:frontend-patterns`, `agent-skills:browser-testing-with-devtools` | `frontend.md`, `ui.md` |
 | `backend` | `everything-claude-code:backend-patterns`, `agent-skills:api-and-interface-design`, `agent-skills:security-and-hardening` | `backend.md`, `security.md` |
 | `dba` | `data:sql-queries`, `agent-skills:deprecation-and-migration` | `backend.md` |
@@ -48,6 +48,8 @@ Al delegar, el `admin` escribe en el encargo: "usa `<skill>`". Si el agente no p
 | Pesadas, solo por petición explícita | `/graphify` (construir el grafo) | Solo si el usuario pide el mapa del repo. |
 | Contexto | `/compact`, `/clear`, `markitdown` | Ver `tokens.md`; el `admin` las sugiere cuando toca. |
 
-Las skills `superpowers:*` no están instaladas hoy en esta máquina; si se instalan, siguen esta misma regla.
+`superpowers:*` (plugin `superpowers@claude-plugins-official`) está instalado; sigue la regla de pesadas. Si choca con `agent-skills:*` en el mismo tipo de tarea, gana `agent-skills:*` (una sola skill por tarea).
 
-Skills por instalar (las ejecuta el usuario, no el agente): `design-taste-frontend`, `apple-design`, `security-audit`, `graphify`, `markitdown`. Los comandos están en `design.md`, `security.md` y `tokens.md`.
+Instaladas hoy: `design-taste-frontend`, `security-audit`, `graphify`, `markitdown`, `gsap-*`, `superpowers:*`. Por instalar (las ejecuta el usuario): `apple-design`; comando en `design.md`.
+
+`design-taste-frontend` es de terceros (Snyk: riesgo medio, Socket: 1 alerta): vive por máquina, no en el repo ni en `adopt.sh`. Otra máquina: `npx skills add Leonxlnx/taste-skill`.
