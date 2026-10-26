@@ -17,4 +17,4 @@ Las clases de ataque están en `.claude/security/`; las skills no las reemplazan
 |---|---|---|
 | Auditoría completa o pentest de un código, con hallazgos verificados | `security-audit` (Cloudflare) | `npx skills add cloudflare/security-audit-skill` |
 
-Pedirla solo para una auditoría completa explícita; para una consulta puntual funciona en modo guía y gasta poco.
+Correrla cuando la base del frontend y del backend ya está hecha y la app se da por terminada, antes de lanzar o desplegar a producción; después se sigue mejorando y se repite tras cambios grandes. No durante el desarrollo inicial: ahí bastan `security-review` y `agent-skills:security-and-hardening`. Para una consulta puntual funciona en modo guía y gasta poco.

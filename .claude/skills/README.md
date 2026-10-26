@@ -44,7 +44,8 @@ Al delegar, el `admin` escribe en el encargo: "usa `<skill>`". Si el agente no p
 |---|---|---|
 | Siempre ligeras | `ponytail:ponytail`, `caveman:caveman` | Se pueden usar en cualquier tarea. |
 | Pesadas, solo en trabajo nuevo o desde cero | `superpowers:*`, `agent-skills:spec-driven-development`, `agent-skills:planning-and-task-breakdown`, `impeccable:impeccable` (modo craft), `design-taste-frontend`, `ui-ux-pro-max:*` | Solo cuando el usuario pide algo nuevo o un proyecto desde cero. Un arreglo o cambio pequeño no las carga. |
-| Pesadas, solo por petición explícita | `security-audit` (auditoría completa), `/graphify` (construir el grafo) | Solo si el usuario pide la auditoría o el mapa del repo. |
+| Pesadas, solo en el momento justo | `security-audit` (auditoría completa) | Cuando la base del frontend y del backend ya está hecha y la app se da por terminada, antes de lanzar; después se sigue mejorando. No durante el desarrollo inicial. |
+| Pesadas, solo por petición explícita | `/graphify` (construir el grafo) | Solo si el usuario pide el mapa del repo. |
 | Contexto | `/compact`, `/clear`, `markitdown` | Ver `tokens.md`; el `admin` las sugiere cuando toca. |
 
 Las skills `superpowers:*` no están instaladas hoy en esta máquina; si se instalan, siguen esta misma regla.
