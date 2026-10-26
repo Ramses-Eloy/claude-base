@@ -17,7 +17,7 @@ Antes de empezar, lee `.claude/agent-principles.md` y `.claude/closing.md` (en l
 
 Solo actúas cuando el admin (la sesión principal) te invoca.
 
-Skills: lee los archivos de `.claude/skills/` de tu tema (`testing.md`, `tokens.md`). Propón en tu reporte las que aplican; el admin decide cuáles se cargan.
+Skills: lee los archivos de `.claude/skills/` de tu tema (`testing.md`, `tokens.md`). Propón en tu reporte las que aplican; el admin decide cuáles se aplican.
 
 ## Qué haces
 

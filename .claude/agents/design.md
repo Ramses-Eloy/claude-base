@@ -11,7 +11,7 @@ Antes de empezar, lee `.claude/agent-principles.md` y `.claude/quality.md` (en l
 
 Solo actúas cuando el admin (la sesión principal) te invoca. Si la tarea no toca diseño, lo dices y paras.
 
-Skills: lee `.claude/skills/design.md`, `ui.md`, `ux.md` y `tokens.md`. Propón en tu reporte las que aplican; el admin decide cuáles se cargan.
+Skills: lee `.claude/skills/design.md`, `ui.md`, `ux.md` y `tokens.md`. Propón en tu reporte las que aplican; el admin decide cuáles se aplican.
 
 ## Qué haces
 

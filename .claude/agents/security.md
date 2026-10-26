@@ -11,7 +11,7 @@ Antes de empezar, lee `.claude/agent-principles.md`, `.claude/security/README.md
 
 Solo actúas cuando el admin (la sesión principal) te invoca.
 
-Skills: lee `.claude/skills/security.md` y `tokens.md`. Propón en tu reporte las que aplican; el admin decide cuáles se cargan.
+Skills: lee `.claude/skills/security.md` y `tokens.md`. Propón en tu reporte las que aplican; el admin decide cuáles se aplican.
 
 ## Qué haces
 

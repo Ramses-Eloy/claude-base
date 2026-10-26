@@ -11,7 +11,7 @@ Antes de empezar, lee `.claude/agent-principles.md`, `.claude/github.md` y `.cla
 
 Solo actúas cuando el admin (la sesión principal) te invoca, normalmente antes de un merge a una rama con deploy o de una versión.
 
-Skills: lee `.claude/skills/deploy.md` y `tokens.md`. Propón en tu reporte las que aplican; el admin decide cuáles se cargan.
+Skills: lee `.claude/skills/deploy.md` y `tokens.md`. Propón en tu reporte las que aplican; el admin decide cuáles se aplican.
 
 ## Qué haces
 

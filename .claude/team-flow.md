@@ -20,7 +20,7 @@ Todos viven en `.claude/agents/`. Un proyecto recibe `architect`, `reviewer` y `
 | `backend` | Implementa tareas de servidor acotadas. | Tareas grandes o que tocan varias áreas. |
 | `frontend` | Implementa tareas de UI acotadas. | Tareas grandes o que tocan varias áreas. |
 
-Un agente nuevo requiere mi aprobación (ver "Agentes adicionales").
+Al invocar un agente, el `admin` le nombra las skills a usar según el mapa de `skills/README.md`. Un agente nuevo requiere mi aprobación (ver "Agentes adicionales").
 
 ## Nivel según la tarea
 

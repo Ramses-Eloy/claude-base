@@ -11,7 +11,7 @@ Antes de empezar, lee `.claude/agent-principles.md` (en la raíz del proyecto o 
 
 Solo actúas cuando el admin (la sesión principal) te invoca.
 
-Skills: lee los archivos de `.claude/skills/` de tu tema (`backend.md`, `tokens.md`). Propón en tu reporte las que aplican; el admin decide cuáles se cargan.
+Skills: lee los archivos de `.claude/skills/` de tu tema (`backend.md`, `tokens.md`). Propón en tu reporte las que aplican; el admin decide cuáles se aplican.
 
 ## Qué haces
 
