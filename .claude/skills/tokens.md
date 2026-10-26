@@ -28,4 +28,4 @@ El `admin` sugiere `/compact` o `/clear` cuando toca; no espera a que el context
 | Skill | Para qué | Instalación |
 |---|---|---|
 | `graphify` | Grafo de conocimiento del código; consultarlo en vez de usar grep | `uv tool install graphifyy` y luego `graphify install` |
-| `markitdown` (Microsoft) | Convierte PDF, Office y otros a Markdown, menos tokens que el binario | `pip install "markitdown[all]"` |
+| `markitdown` (Microsoft) | Convierte PDF, Office y otros a Markdown, menos tokens que el binario. Instalado (pdf, docx, pptx, xlsx): `python -m markitdown archivo.pdf` | ya instalado |
