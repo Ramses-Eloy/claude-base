@@ -61,6 +61,37 @@ Se decide por proyecto. El agente propone uno y tú eliges. La decisión queda e
 | b | `main` (producción) + `development` + ramas por Issue | Apps con usuarios |
 | c | `production` + `staging` opcional + `development` + ramas por Issue | SaaS con pagos o multi-tenant |
 
+### Qué significa a, b y c
+
+La idea: cuanto más daño puede hacer un error a usuarios reales, más pasos hay entre tu código y producción. Cada modelo añade un escalón.
+
+| | Modelo a | Modelo b | Modelo c |
+|---|---|---|---|
+| Ramas fijas | `main` | `main` + `development` | `production` + `staging` (opcional) + `development` |
+| Producción es | `main` | `main` | `production` |
+| Camino de un cambio | rama por Issue → PR a `main` | rama por Issue → PR a `development` → PR a `main` | rama por Issue → PR a `development` → `staging` (ensayo) → `production` |
+| Dónde se prueba junto | en la propia rama o en local | en `development` | en `development` y en `staging`, que se parece a producción |
+| Riesgo | todo merge a `main` puede llegar a producción | hay que mantener `development` al día con `main` | más ramas y ambientes que mantener |
+| Úsalo cuando | sitios estáticos, prototipos, proyectos sin usuarios ni pagos | hay usuarios reales y datos, pero sin cobros críticos | hay pagos, varios clientes (multi-tenant) o datos sensibles |
+
+**Cuándo subir de modelo.** No se sube por gusto, sino cuando aparece una de estas señales: el primer pago real, los primeros usuarios con datos, un segundo colaborador o un deploy automático a producción. La señal concreta de cada proyecto está escrita en su línea `Ramas:`.
+
+**Cómo se sube de a a b.** Se crea `development` desde `main`, las ramas nuevas salen de `development`, se protege `main` contra commits directos y se actualiza la línea `Ramas:` del `CLAUDE.md`. Crear ramas en el remoto y cambiar protecciones requiere tu confirmación.
+
+**Estado actual de los proyectos** (según la línea `Ramas:` de cada `CLAUDE.md`):
+
+| Proyecto | Modelo hoy | Cuándo cambia |
+|---|---|---|
+| AsegurApp | a | a c antes de cobrar la primera suscripción |
+| ControlCenter | a | a c antes del primer pago real |
+| MermaWatch | a | a c antes de cobrar la primera suscripción |
+| SalonFlow | a | a c antes del primer salón que pague |
+| WebDavid | a | a b cuando reciba pedidos reales |
+| Radio-WhiteLabel | a, más `release/<marca>-<versión>` | para publicar en tiendas |
+| WebKosmos, WebSira | a, con deploy automático desde `main` | todo push a `main` publica la web |
+| WebALV | a | sin cambio previsto |
+| LauncherDBS, WebFA | sin definir | falta decidirlo |
+
 ### Estructura
 
 ```text
