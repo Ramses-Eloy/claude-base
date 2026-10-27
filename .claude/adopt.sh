@@ -85,7 +85,7 @@ aviso() { echo "  - $1"; avisos=$((avisos + 1)); }
 c="$dest/CLAUDE.md"
 grep -q 'RELLENAR' "$c" && aviso "CLAUDE.md tiene campos sin completar (RELLENAR): adaptarlo al proyecto"
 grep -q 'Skills de este proyecto:' "$c" || aviso "CLAUDE.md no tiene la línea 'Skills de este proyecto: ...'"
-grep -q '^Ramas:' "$c" || aviso "CLAUDE.md no tiene la línea 'Ramas: ...': proponer un modelo (github.md → Modelo de ramas) y esperar decisión"
+grep -q '^Ramas:' "$c" || aviso "CLAUDE.md no tiene la línea 'Ramas: ...': agregar 'Ramas: GitFlow. Deploy automático desde: ...' (github.md → GitFlow)"
 grep -qE '^[A-Za-z0-9_./-]+\.md[[:space:]]*$' "$c" && aviso "CLAUDE.md tiene una ruta .md suelta: ¿falta la @ del import?"
 if [ $externo = 1 ] && ! grep -q '^@.claude/global.md' "$c"; then
   aviso "CLAUDE.md no importa las reglas base: agregar '@.claude/global.md' al inicio"

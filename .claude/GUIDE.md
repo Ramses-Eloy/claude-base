@@ -35,7 +35,7 @@ La carpeta `C:\Claude` es un repo git local: solo versiona `CLAUDE.md`, `.claude
    - **Si el proyecto ya existía, ejecuta `.claude/adopt.sh`** y te reporta lo que falta antes de tocar código.
    - **Completa el modelo de amenazas:** el tipo E/C/S, activos, atacantes, vectores y controles.
    - **Si no indicaste el stack, conversa contigo** y te da 2 o 3 opciones. No crea nada hasta que decidas.
-   - **Si no hay línea `Ramas:`**, te propone un modelo de ramas y espera tu decisión.
+   - **Si no hay línea `Ramas:`**, la completa con GitFlow y te avisa si falta crear `develop`.
 3. A partir de ahí trabaja en silencio. Cierra con un reporte de 15 líneas como máximo, dividido en Cambió / Verificado / Pendiente y con evidencia.
 
 ## Flujo de trabajo
@@ -65,22 +65,25 @@ La sesión principal, que es la que abres tú, hace de `admin`: decide el alcanc
 
 - **Issues solo en tareas medianas o grandes.** Las triviales y pequeñas se resuelven en la conversación.
 - **Cada Issue lleva criterios de aceptación.** Sin ellos no se implementa.
-- **Ramas** con el formato `<tipo>/<N>-<slug>` (por ejemplo `fix/12-rate-limit-contacto`).
+- **Ramas** con el formato `feature/<N>-<slug>` (por ejemplo `feature/12-rate-limit-contacto`); las urgentes de producción, `hotfix/<N>-<slug>`.
 - **PRs** con `Closes #N`. El merge solo lo hace alguien con tu aprobación.
 - **Labels:** solo `feature`, `bug`, `docs`, `chore`, `security` y `bloqueado`, y solo si ya existen en el repo. Crear uno requiere tu aprobación.
 - **Herramienta:** `gh` en GitHub; `fj` o `tea` en Forgejo; sin remoto, la conversación.
 
-**Modelo de ramas** (detalle en `github.md`). El agente no lo elige: lo propone con ventajas y desventajas y tú decides. Queda registrado en una línea del `CLAUDE.md` del proyecto: `Ramas: … Deploy automático desde: …`.
+**GitFlow** (detalle en `github.md`). Un solo flujo para todos los proyectos; queda registrado en una línea del `CLAUDE.md`: `Ramas: GitFlow. Deploy automático desde: …`.
 
-| Modelo | Ramas | Para |
-|---|---|---|
-| a | `main` + ramas por Issue | Proyectos pequeños o estáticos |
-| b | `main` (producción) + `development` + ramas por Issue | Apps con usuarios |
-| c | `production` + `staging` opcional + `development` + ramas por Issue | SaaS con pagos o multi-tenant |
+| Rama | Sale de | Vuelve a | Para |
+|---|---|---|---|
+| `main` | | | Producción. Solo recibe `release/*` y `hotfix/*` |
+| `develop` | | | Integración de las features |
+| `feature/<n>-<slug>` | `develop` | `develop` por PR | Una tarea (un Issue) |
+| `release/<versión>` | `develop` | `main` y `develop` | Preparar una versión (opcional en sitios pequeños) |
+| `hotfix/<n>-<slug>` | `main` | `main` y `develop` | Fallo urgente en producción |
 
-En todos los modelos:
-- nunca hay commits directos a la rama de producción;
-- push, merge y borrar ramas, solo con tu confirmación;
+Además:
+- nunca hay commits directos a `main` ni a `develop`;
+- cada versión que entra a `main` lleva un tag (`v1.2.0`);
+- push, merge, borrar ramas, crear `develop` y proteger ramas, solo con tu confirmación;
 - antes de proponer un push o un merge, el agente revisa si alguna rama dispara un deploy automático (workflows de GitHub o Cloudflare Builds) y te avisa.
 
 ## Seguridad
@@ -122,7 +125,7 @@ Al empezar en otra máquina: `git pull`, comprobar `gh auth status` y leer el Is
 
 ## Adoptar proyectos y actualizar la base
 
-- **Nuevo, dentro de `C:\Claude`:** abre Claude Code en la carpeta. El agente crea el `CLAUDE.md` desde la plantilla y te pregunta el stack y el modelo de ramas.
+- **Nuevo, dentro de `C:\Claude`:** abre Claude Code en la carpeta. El agente crea el `CLAUDE.md` desde la plantilla y te pregunta el stack.
 - **Existente, dentro de `C:\Claude`:** ejecuta `bash .claude/adopt.sh <Proyecto>`. Copia solo los archivos que faltan, nunca sobrescribe, copia `architect`, `reviewer` y `qa` (más los de `--agentes dba,backend,...`), e imprime una lista de avisos (RELLENAR, `.env`, hook, scripts, eol, remoto, `Ramas:`…). Las reglas se heredan del `CLAUDE.md` de la raíz.
 - **Fuera de `C:\Claude`:** `adopt.sh` copia también `.claude/` dentro del proyecto con un `.claude/global.md`. Si el `CLAUDE.md` es nuevo, le agrega `@.claude/global.md` al inicio.
 - **Actualizar la base en un proyecto externo:** `bash .claude/adopt.sh --actualizar <ruta>`. Refresca su `.claude/` solo si encuentra un `VERSION` ahí; si `.claude/` no es de estas reglas, no la toca. Sube `VERSION` (v1, v2…) cada vez que cambies la base, para saber qué versión tiene cada proyecto.
@@ -158,7 +161,7 @@ Al empezar en otra máquina: `git pull`, comprobar `gh auth status` y leer el Is
 ## Estado al 2026-10-16
 
 - **Base:** v2, en el repo privado `github.com/Ramses-Eloy/claude-base` (rama `main`).
-- **Adoptados:** WebKosmos (tipo E, modelo a: solo `main`; agentes `architect`, `reviewer` y `qa`). `main` va varios commits por delante de `origin`, sin push. La rama `rate-limit-contacto` está lista y sin merge.
+- **Adoptados:** WebKosmos (tipo E, GitFlow; agentes `architect`, `reviewer` y `qa`). `main` va varios commits por delante de `origin`, sin push. La rama `rate-limit-contacto` está lista y sin merge.
 - **Issues abiertos de WebKosmos** (label `security`):
   - #5 Cabeceras de seguridad y HTTPS obligatorio
   - #6 Rechazar envíos del formulario desde otros orígenes

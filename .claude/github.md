@@ -28,28 +28,31 @@ Sin criterios de aceptación, el Issue no está listo para implementarse: propon
 
 ## Ramas, commits y PR
 
-- Rama por Issue: `<tipo>/<número>-<slug-corto>`, con `tipo` = `feat`, `fix`, `docs`, `chore`, `refactor` o `test`. Ejemplo: `fix/12-rate-limit-contacto`.
+- Rama por Issue: `feature/<número>-<slug-corto>` (arreglos y mejoras no urgentes también). Ejemplo: `feature/12-rate-limit-contacto`. Las urgentes de producción van en `hotfix/` (ver "GitFlow").
 - Commits que mencionan el Issue (`#12`) cuando aplica.
 - PR con `Closes #12` en la descripción, resumen del cambio y cómo se verificó.
 - Merge: nunca sin mi aprobación.
 
-## Modelo de ramas
+## GitFlow
 
-No lo elige el agente. Al adoptar un proyecto, o cuando crezca (cuentas, pagos, varios colaboradores, deploy automático), proponer uno con ventajas y desventajas y esperar mi decisión. Se registra en una línea del `CLAUDE.md` del proyecto: `Ramas: <modelo y nombres>. Deploy automático desde: <rama o ninguna>`. Los nombres exactos se deciden por proyecto.
+Un solo flujo para todos los proyectos. Se registra en el `CLAUDE.md` del proyecto con la línea `Ramas: GitFlow. Deploy automático desde: <rama o ninguna>`.
 
-| Modelo | Ramas | Para | Ventaja | Desventaja |
-|---|---|---|---|---|
-| a | `main` + ramas por Issue | Pequeños o estáticos | Simple, nada que sincronizar | Todo merge a `main` puede llegar a producción |
-| b | `main` (producción) + `development` + ramas por Issue | Apps con usuarios | Se integra y prueba antes de producción | Hay que llevar `development` a `main` y mantenerlas al día |
-| c | `production` + `staging` opcional + `development` + ramas por Issue | SaaS con pagos o multi-tenant | Ensayo en un ambiente igual a producción | Más ramas y ambientes que mantener |
+| Rama | Sale de | Vuelve a | Para |
+|---|---|---|---|
+| `main` | | | Producción. Solo recibe `release/*` y `hotfix/*` |
+| `develop` | | | Integración: aquí se juntan y prueban las features |
+| `feature/<n>-<slug>` | `develop` | `develop` por PR | Una tarea (un Issue) |
+| `release/<versión>` | `develop` | `main` y `develop` | Preparar y estabilizar una versión. Opcional en sitios pequeños |
+| `hotfix/<n>-<slug>` | `main` | `main` y `develop` | Fallo urgente en producción |
 
-Reglas comunes:
-- Las ramas por Issue salen de `development` (de `main` en el modelo a) y vuelven por PR.
-- Hotfix (modelos b y c): un fallo urgente en producción va en `hotfix/<n>-<slug>`, que sale de la rama de producción y vuelve a ella por PR con mi aprobación. Después se lleva también a `development` con otro PR, para que no se pierda. Solo para fallos en producción; lo demás va por `fix/`. En el modelo a no aplica: un `fix/` desde `main` ya cumple.
-- Nunca commits directos a la rama de producción, ni a `main` si existe `development`.
+Reglas:
+- Nunca commits directos a `main` ni a `develop`: todo entra por PR.
+- Un `release` o un `hotfix` entra a `main` por PR y después se lleva también a `develop`, para que nada se pierda.
+- Cada versión que entra a `main` lleva un tag (`v1.2.0`).
+- El deploy a producción sale solo de `main`.
 - Merge, push y borrar ramas: con mi confirmación.
-- El deploy a producción sale solo de la rama de producción.
 - Antes de proponer push o merge, comprobar si alguna rama dispara deploy automático (`.github/workflows/`, Cloudflare Workers/Pages Builds u otro) y avisarme. Si no se puede comprobar desde el repo (Cloudflare Builds se configura en el panel), decirlo.
+- Crear `develop` en un proyecto nuevo (desde `main`) y proteger `main` y `develop` requiere mi confirmación.
 
 ## Labels
 

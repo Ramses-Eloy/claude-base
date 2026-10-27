@@ -17,7 +17,7 @@
 - Build: <!-- RELLENAR -->
 - Lint/typecheck: <!-- RELLENAR -->
 
-Ramas: <!-- RELLENAR: modelo de .claude/github.md → Modelo de ramas y nombres; lo decido yo, no el agente -->. Deploy automático desde: <!-- RELLENAR: rama o ninguna -->
+Ramas: GitFlow (`.claude/github.md`). Deploy automático desde: <!-- RELLENAR: rama o ninguna -->
 
 ## Datos sensibles
 
