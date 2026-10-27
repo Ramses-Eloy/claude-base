@@ -51,7 +51,7 @@ Después, clona cada proyecto dentro de esa carpeta (`git clone <url> Claude/<Pr
 - **Fuera de `Claude/`:** el mismo comando copia `.claude/` dentro del proyecto y genera `.claude/global.md`.
 - **Actualizar un proyecto externo:** `bash .claude/adopt.sh --actualizar <ruta>`. Refresca su `.claude/` si tiene `VERSION`. Sube `VERSION` cada vez que cambies la base.
 
-## Modelo de ramas
+## Modelo de ramas (GitFlow simplificado)
 
 Se decide por proyecto. El agente propone uno y tú eliges. La decisión queda en el `CLAUDE.md` del proyecto como `Ramas: … Deploy automático desde: …`.
 
@@ -61,7 +61,43 @@ Se decide por proyecto. El agente propone uno y tú eliges. La decisión queda e
 | b | `main` (producción) + `development` + ramas por Issue | Apps con usuarios |
 | c | `production` + `staging` opcional + `development` + ramas por Issue | SaaS con pagos o multi-tenant |
 
-Nunca se hacen commits directos a producción. Merge, push y borrar ramas requieren confirmación. Antes de un push o un merge se comprueba si la rama dispara un deploy automático.
+### Estructura
+
+```text
+Modelo a (sitios pequeños)
+  main ─────●─────────●─────────●───  (deploy)
+             ╲        ╱ PR
+              feat/12-...
+
+Modelos b y c (apps y SaaS)
+  main/production ───●──────────────●──────●───  (deploy)
+                      ╲            ╱ PR     ╲ ╱ PR
+                       hotfix/20-...         (y luego a development)
+  staging (solo c) ───────●───────╱
+                           ╲     ╱ PR
+  development ────●─────────●───●─────────●───
+                   ╲       ╱ PR
+                    feat/12-... · fix/13-... · docs/14-...
+```
+
+- Rama por Issue: `<tipo>/<número>-<slug>`, con tipo `feat`, `fix`, `docs`, `chore`, `refactor` o `test`. Sale de `development` (de `main` en el modelo a) y vuelve por PR con `Closes #n`.
+- Hotfix (modelos b y c): un fallo urgente en producción va en `hotfix/<n>-<slug>`, que sale de la rama de producción y vuelve a ella por PR con aprobación; después se lleva también a `development`. En el modelo a basta un `fix/`.
+- Nunca commits directos a producción, ni a `main` si existe `development`. El deploy sale solo de la rama de producción.
+- Merge, push y borrar ramas requieren confirmación. Antes de un push o un merge se comprueba si la rama dispara un deploy automático.
+
+### Comparación con GitFlow clásico
+
+| Pieza | GitFlow clásico | Este flujo |
+|---|---|---|
+| Producción | `main` | `main` (modelos a y b) o `production` (modelo c) |
+| Integración | `develop` | `development` (modelos b y c) |
+| Trabajo nuevo | `feature/*` | `<tipo>/<n>-<slug>`, una rama por Issue |
+| Preparar versión | `release/*` | No existe; se usa `staging` (modelo c) |
+| Arreglo urgente | `hotfix/*` desde `main` | `hotfix/*` desde producción (modelos b y c) |
+| Una tarea | No define | Issue → rama → PR con criterios de aceptación y evidencia |
+| Commits directos | Solo a `main` prohibidos | Prohibidos a producción y a `main` si existe `development` |
+| Deploy | Desde `main` | Solo desde la rama de producción; se avisa si otra rama lo dispara |
+| Merge | Libre | Solo con aprobación |
 
 ## Flujo de trabajo
 
