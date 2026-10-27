@@ -45,6 +45,7 @@ No lo elige el agente. Al adoptar un proyecto, o cuando crezca (cuentas, pagos, 
 
 Reglas comunes:
 - Las ramas por Issue salen de `development` (de `main` en el modelo a) y vuelven por PR.
+- Hotfix (modelos b y c): un fallo urgente en producción va en `hotfix/<n>-<slug>`, que sale de la rama de producción y vuelve a ella por PR con mi aprobación. Después se lleva también a `development` con otro PR, para que no se pierda. Solo para fallos en producción; lo demás va por `fix/`. En el modelo a no aplica: un `fix/` desde `main` ya cumple.
 - Nunca commits directos a la rama de producción, ni a `main` si existe `development`.
 - Merge, push y borrar ramas: con mi confirmación.
 - El deploy a producción sale solo de la rama de producción.
