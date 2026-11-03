@@ -16,6 +16,7 @@ Todos viven en `.claude/agents/`. Un proyecto recibe `architect`, `reviewer` y `
 | `design` | Dictamen UX/UI, sistema de diseño y accesibilidad. Solo lectura. | Pantallas, flujos o componentes nuevos. |
 | `security` | Modelo de amenazas y auditoría de un área. Solo lectura. | Auth, permisos, datos, pagos o dependencias nuevas. |
 | `deploy` | Dictamen de CI/CD, versión y si algo está listo para desplegar. Nunca despliega. | Antes de un merge a rama con deploy o de una versión. |
+| `quick` | Cambios triviales y mecánicos (Haiku). Si toca seguridad o datos, devuelve `Bloqueado`. | Renombrados, formato, textos, búsquedas. |
 | `dba` | Dictamen sobre esquema, migraciones, índices y queries. Solo lectura. | Antes de cualquier cambio de esquema. |
 | `backend` | Implementa tareas de servidor acotadas. | Tareas grandes o que tocan varias áreas. |
 | `frontend` | Implementa tareas de UI acotadas. | Tareas grandes o que tocan varias áreas. |
@@ -30,6 +31,18 @@ Al invocar un agente, el `admin` le nombra las skills a usar según el mapa de `
 | Pequeño | Un endpoint o un formulario | Sesión principal implementa → `qa` (o los comandos directamente) → `reviewer` solo si toca seguridad, datos o permisos. |
 | Mediano | Feature con API, UI y datos | `architect` y/o `dba` → implementa la sesión principal (o `backend`/`frontend` si toca varias áreas) → `qa` → `reviewer`. |
 | Grande | Módulo nuevo, cambio de arquitectura | Plan conmigo primero (`agent-skills:planning-and-task-breakdown`), dividido en Issues; cada parte como mediana. |
+
+## Modelo según la tarea
+
+`settings.json` usa `opusplan`: Opus planifica (modo plan) y Sonnet ejecuta. Los agentes ya fijan su modelo.
+
+| Trabajo | Modelo |
+|---|---|
+| Plan, arquitectura, decisiones, revisión (`architect`, `dba`, `security`, `reviewer`) | Opus |
+| Implementar, pruebas, UI (`backend`, `frontend`, `qa`, `deploy`, `design`) | Sonnet |
+| Mecánico y trivial (`quick`) | Haiku |
+
+`ultrathink` en el prompt solo para arquitectura nueva, bugs sin causa clara o decisiones de seguridad; nunca por defecto.
 
 ## Quién implementa
 
@@ -48,6 +61,17 @@ Al invocar un agente, el `admin` le nombra las skills a usar según el mapa de `
 6. `reviewer` audita el diff (pasarle la lista de archivos o el diff).
 7. Corregir y repetir 5–6, como máximo 2 ciclos; si no converge, preguntarme.
 8. Reporte de cierre (`closing.md`); en tareas medianas o grandes, PR que cierra el Issue.
+
+## Bucles con meta (trabajo autónomo)
+
+El `admin` puede trabajar solo en bucle únicamente si hay una **meta verificable**; sin ella, no hay bucle.
+
+1. **Definir antes de empezar:** la meta (un comando que la comprueba: tests verdes, lint en 0, build ok), la **lista numerada** de ítems o pasos, el **tope de iteraciones** (por defecto 5) y la condición de parada.
+2. **Cada vuelta:** hacer un ítem, correr la verificación, marcarlo en la lista (TaskCreate/TaskList) y seguir. Una vuelta = un ítem.
+3. **Parar y preguntarme** cuando: se alcanza el tope; el mismo ítem falla 2 veces; la vuelta pide algo del piso crítico (deploy, migración, borrar, permisos, push a rama con deploy); la meta o el alcance cambian.
+4. **Modelo:** Sonnet ejecuta las vueltas; Opus (`reviewer`) revisa una vez al final, no en cada vuelta. `ultrathink` solo si un ítem se atasca.
+5. **Ritmo:** `/loop` para repetir por intervalo (o autoritmo) cuando se espera algo externo (CI, deploy ya aprobado); `/compact` entre bloques de vueltas.
+6. **Cierre:** reporte con la lista (hecho / pendiente / bloqueado), el resultado real de la verificación y el número de vueltas.
 
 ## Comunicación
 

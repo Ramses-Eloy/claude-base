@@ -21,7 +21,7 @@
 | Entender un repo grande sin leer archivo por archivo | `/graphify .` y consultar el grafo (ver abajo) |
 | Leer un PDF, Word, Excel o PowerPoint | convertirlo antes con `markitdown` y leer el `.md` |
 
-El `admin` sugiere `/compact` o `/clear` cuando toca; no espera a que el contexto se llene.
+El autocompact salta al 70 % del contexto (`settings.json`). El `admin` sugiere `/compact` o `/clear` cuando toca; no espera a que el contexto se llene.
 
 ## Instaladas (otra máquina: repetir el comando)
 

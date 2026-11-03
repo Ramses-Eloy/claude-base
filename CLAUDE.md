@@ -14,6 +14,7 @@ Aplican a todo agente en cualquier subcarpeta. Las reglas del proyecto mandan, s
 - No inventar endpoints, cifras, datos ni clientes; sin mocks que simulen datos reales.
 - Preguntar si falta información o la decisión cambia el resultado; si es menor y reversible, decidir y avisar. Un subagente termina con `Bloqueado: <pregunta>`.
 - Stack: si no lo propongo, conversar primero y dar 2–3 opciones; no crear nada hasta mi decisión.
+- Trabajo autónomo: solo en bucle con meta verificable, lista numerada y tope de vueltas (`team-flow.md` → Bucles); el piso crítico y los bloqueos paran el bucle y me preguntan.
 - Sin narrar avances; cierre de máx. 15 líneas (Cambió / Verificado / Pendiente) con evidencia.
 - Leer solo lo necesario (`quality.md` → Eficiencia).
 

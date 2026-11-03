@@ -53,3 +53,7 @@ Al delegar, el `admin` escribe en el encargo: "usa `<skill>`". Si el agente no p
 Instaladas hoy: `design-taste-frontend`, `security-audit`, `graphify`, `markitdown`, `gsap-*`, `superpowers:*`. Por instalar (las ejecuta el usuario): `apple-design`; comando en `design.md`.
 
 `design-taste-frontend` es de terceros (Snyk: riesgo medio, Socket: 1 alerta): vive por máquina, no en el repo ni en `adopt.sh`. Otra máquina: `npx skills add Leonxlnx/taste-skill`.
+
+## Skills de terceros: escanear antes y después
+
+Antes de instalar una skill o plugin de terceros, y al actualizarlo, correr `skillspector scan <ruta> --no-llm --recursive` (NVIDIA; `uv tool install git+https://github.com/NVIDIA/skillspector.git`). El modo estático da falsos positivos en docs y plantillas: revisar a mano los CRITICAL/HIGH en código ejecutable antes de decidir. Reescanear las instaladas de vez en cuando (`/ponytail`-style: al cerrar un proyecto o cada mes).

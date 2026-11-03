@@ -42,3 +42,7 @@ Antes de dar algo por terminado, revisar el diff contra la lista siguiente. La h
   - **Qué cambió:** archivos y comportamiento.
   - **Qué se verificó:** pruebas, build, lint o revisión manual, con su resultado real.
   - **Pendiente o riesgoso:** lo que no se hizo, lo que no se pudo verificar y las decisiones menores que tomé por mi cuenta.
+
+## Notas en Obsidian
+
+En tareas medianas y grandes, guardar el reporte de cierre en `C:\Claude\Vault\Cierres\<proyecto>-<fecha>-<tema>.md` (plantilla en `Vault/Plantillas/`) y las decisiones técnicas en `Vault/Decisiones/`. Enlazar con `[[Proyectos/<proyecto>]]`. Sin secretos ni datos personales. El Vault no se versiona (`.gitignore`); abrirlo en Obsidian con "Open folder as vault" sobre `C:\Claude\Vault`.
