@@ -79,31 +79,7 @@ fi
 
 
 # Política de modelos: agrega model/env al settings.json del proyecto solo si faltan (nunca pisa).
-if [ -f "$dest/.claude/settings.json" ]; then
-  python3 - "$dest/.claude/settings.json" "$template/.claude/settings.json" << 'PY' 2> /dev/null || python - "$dest/.claude/settings.json" "$template/.claude/settings.json" << 'PY2'
-import json,sys
-p,t=sys.argv[1:3]; d=json.load(open(p,encoding="utf8")); b=json.load(open(t,encoding="utf8")); c=[]
-for k in ("model","env"):
-    if k not in d: d[k]=b[k]; c.append(k)
-    elif k=="env":
-        for e,v in b[k].items():
-            if e not in d[k]: d[k][e]=v; c.append("env."+e)
-if c: json.dump(d,open(p,"w",encoding="utf8"),indent=2,ensure_ascii=False); open(p,"a").write("
-")
-print("  settings.json: agregado "+", ".join(c) if c else "  settings.json: política de modelos ya presente")
-PY
-import json,sys
-p,t=sys.argv[1:3]; d=json.load(open(p,encoding="utf8")); b=json.load(open(t,encoding="utf8")); c=[]
-for k in ("model","env"):
-    if k not in d: d[k]=b[k]; c.append(k)
-    elif k=="env":
-        for e,v in b[k].items():
-            if e not in d[k]: d[k][e]=v; c.append("env."+e)
-if c: json.dump(d,open(p,"w",encoding="utf8"),indent=2,ensure_ascii=False); open(p,"a").write("
-")
-print("  settings.json: agregado "+", ".join(c) if c else "  settings.json: política de modelos ya presente")
-PY2
-fi
+[ -f "$dest/.claude/settings.json" ] && python "$base/merge-settings.py" "$dest/.claude/settings.json" "$template/.claude/settings.json"
 
 echo "Revisión:"
 avisos=0
