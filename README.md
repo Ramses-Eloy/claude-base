@@ -7,7 +7,7 @@ Reglas y plantillas comunes para trabajar con Claude Code en todos mis proyectos
 | Ruta | Qué hace |
 |---|---|
 | `CLAUDE.md` | Núcleo de reglas globales, siempre cargado: arranque, piso crítico de seguridad y qué leer en cada caso. |
-| `.claude/quality.md` | Calidad de código, diseño y copy, cuándo preguntar, elección de stack y eficiencia de lectura. |
+| `.claude/quality.md` | Calidad de código, plan de diseño, móvil y capturas, documentos `features/`, conectores por CLI, cuándo preguntar, stack y eficiencia. |
 | `.claude/closing.md` | Pruebas, pruebas que intentan romper el sistema, revisión final y formato del reporte. |
 | `.claude/team-flow.md` | Equipo de agentes, tamaños de tarea y orden de pasos. |
 | `.claude/github.md` | Issues, ramas, PRs, labels y GitFlow. |
@@ -16,7 +16,7 @@ Reglas y plantillas comunes para trabajar con Claude Code en todos mis proyectos
 | `.claude/agent-principles.md` | Principios que leen los subagentes. |
 | `.claude/security/` | Índice por tipo de proyecto y un archivo por clase de ataque. |
 | `.claude/template/` | Lo que se copia a cada proyecto: `CLAUDE.md`, `.claude/settings.json`, los agentes `architect`, `reviewer` y `qa`, el hook del qa, `.gitignore`, `.env.example` y `.gitattributes`. |
-| `.claude/agents/` | Los 9 agentes (`architect`, `reviewer`, `qa`, `design`, `security`, `deploy`, `dba`, `backend`, `frontend`); `adopt.sh` copia los 3 primeros y el admin pide el resto. |
+| `.claude/agents/` | Los 10 agentes (`architect`, `reviewer`, `qa`, `quick`, `design`, `security`, `deploy`, `dba`, `backend`, `frontend`); `adopt.sh` copia los 4 primeros y el admin pide el resto. |
 | `.claude/skills/` | Skills por tema (tokens, diseño, UI, UX, frontend, backend, seguridad, pruebas, despliegue). |
 | `.claude/adopt.sh` | Adopta un proyecto: copia lo que falta, nunca sobrescribe y avisa de lo pendiente. |
 | `.claude/test-qa-bash.sh` | Pruebas del hook del qa. |

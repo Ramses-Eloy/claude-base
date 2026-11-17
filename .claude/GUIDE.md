@@ -9,7 +9,7 @@ Documento para ti, no para los agentes. Ningún `CLAUDE.md` lo importa ni lo cit
 | Archivo | Para qué |
 |---|---|
 | `CLAUDE.md` (raíz) | Núcleo que siempre está cargado: arranque, piso crítico de seguridad y qué leer en cada caso. |
-| `.claude/quality.md` | Calidad de código, diseño y copy sin genéricos, cuándo preguntar, elección de stack y eficiencia de lectura. |
+| `.claude/quality.md` | Calidad de código, plan de diseño, móvil y capturas, documentos `features/`, conectores por CLI, cuándo preguntar, stack y eficiencia. |
 | `.claude/closing.md` | Pruebas, pruebas que intentan romper el sistema, revisión final y formato del reporte. |
 | `.claude/team-flow.md` | Equipo de agentes, tamaños de tarea, quién implementa, orden de pasos y agentes adicionales. |
 | `.claude/github.md` | Issues, ramas, PRs, labels, comentarios con evidencia y modelo de ramas. |
@@ -18,7 +18,7 @@ Documento para ti, no para los agentes. Ningún `CLAUDE.md` lo importa ni lo cit
 | `.claude/agent-principles.md` | Los 9 principios que leen los subagentes. |
 | `.claude/security/` | `README.md`, que indica qué clase de ataque leer según el tipo de proyecto y la tarea, más un archivo por clase. |
 | `.claude/template/` | Lo que se copia a cada proyecto: `CLAUDE.md` con campos RELLENAR, `.claude/settings.json`, los agentes `architect`, `reviewer` y `qa`, el hook del qa, `.gitignore`, `.env.example` y `.gitattributes`. |
-| `.claude/agents/` | Los 9 agentes: `architect`, `reviewer`, `qa`, `design`, `security`, `deploy`, `dba`, `backend`, `frontend`. `adopt.sh` copia los 3 primeros; el admin pide el resto. |
+| `.claude/agents/` | Los 10 agentes: `architect`, `reviewer`, `qa`, `quick`, `design`, `security`, `deploy`, `dba`, `backend`, `frontend`. `adopt.sh` copia los 4 primeros; el admin pide el resto. |
 | `.claude/skills/` | Skills por tema (tokens, diseño, UI, UX, frontend, backend, seguridad, pruebas, despliegue); cada agente propone las suyas. |
 | `.claude/adopt.sh` | Copia lo que le falta a un proyecto y revisa su configuración. |
 | `.claude/test-qa-bash.sh` | 22 casos para comprobar el hook del qa. |

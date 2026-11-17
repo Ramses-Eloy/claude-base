@@ -64,7 +64,7 @@ else
   mkdir -p "$dest/.claude"
   # Reglas, seguridad, skills y scripts; los agentes y la template no se copian aquí.
   for p in "$base"/*; do
-    case "$(basename "$p")" in agents | template | settings.local.json) continue ;; esac
+    case "$(basename "$p")" in agents | template | settings.json | settings.local.json) continue ;; esac
     cp -R "$p" "$dest/.claude/"
   done
   # Las reglas globales importan @.claude/...; dentro de .claude/ los imports son relativos a ella.
@@ -93,6 +93,9 @@ grep -qE '^[A-Za-z0-9_./-]+\.md[[:space:]]*$' "$c" && aviso "CLAUDE.md tiene una
 if [ $externo = 1 ] && ! grep -q '^@.claude/global.md' "$c"; then
   aviso "CLAUDE.md no importa las reglas base: agregar '@.claude/global.md' al inicio"
 fi
+faltan=""
+for d in PRD design_system architecture database; do [ -f "$dest/features/$d.md" ] || faltan="$faltan $d.md"; done
+[ -n "$faltan" ] && aviso "faltan en features/:$faltan (crearlos cuando estén definidos; database.md solo si hay base de datos)"
 grep -qE '^/?\.env\*?[[:space:]]*$' "$dest/.gitignore" || aviso ".gitignore no excluye .env"
 grep -q '\.env' "$dest/.claude/settings.json" || aviso ".claude/settings.json no bloquea la lectura de .env*"
 grep -q '"allow"' "$dest/.claude/settings.json" || aviso ".claude/settings.json no tiene el allow de verificación que usa el agente qa"

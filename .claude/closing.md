@@ -33,6 +33,9 @@ Antes de dar algo por terminado, revisar el diff contra la lista siguiente. La h
 - [ ] Secretos en el diff, incluidos archivos de configuración y ejemplos.
 - [ ] Dependencias nuevas justificadas y sin vulnerabilidades conocidas.
 - [ ] Diseño o copy genérico (ver `quality.md`).
+- [ ] UI: capturas en móvil y escritorio, criticadas y corregidas (`quality.md` → Diseño).
+- [ ] Sobreingeniería, comentarios o emojis de sobra en el diff.
+- [ ] `features/*.md` al día con lo que cambió.
 
 ## Reporte
 

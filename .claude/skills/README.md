@@ -28,8 +28,8 @@ Al delegar, el `admin` escribe en el encargo: "usa `<skill>`". Si el agente no p
 | Agente | Skills a pedirle | Tema |
 |---|---|---|
 | `architect` | `agent-skills:spec-driven-development`, `agent-skills:documentation-and-adrs`, `agent-skills:api-and-interface-design` | `process.md`, `backend.md` |
-| `design` | `impeccable:impeccable`, `design-taste-frontend`, `ui-ux-pro-max:ui-ux-pro-max`, `design:design-system`, `design:accessibility-review`, `design:ux-copy` | `design.md`, `ui.md`, `ux.md` |
-| `frontend` | `agent-skills:frontend-ui-engineering`, `everything-claude-code:frontend-patterns`, `agent-skills:browser-testing-with-devtools` | `frontend.md`, `ui.md` |
+| `design` | `impeccable:impeccable`, `design-taste-frontend`, `ui-ux-pro-max:ui-ux-pro-max`, `design:design-system`, `design:design-critique`, `design:accessibility-review`, `design:ux-copy` | `design.md`, `ui.md`, `ux.md` |
+| `frontend` | `agent-skills:frontend-ui-engineering`, `everything-claude-code:frontend-patterns`, `agent-skills:browser-testing-with-devtools`, `playwright-cli` (capturas) | `frontend.md`, `ui.md` |
 | `backend` | `everything-claude-code:backend-patterns`, `agent-skills:api-and-interface-design`, `agent-skills:security-and-hardening` | `backend.md`, `security.md` |
 | `dba` | `data:sql-queries`, `agent-skills:deprecation-and-migration` | `backend.md` |
 | `security` | `agent-skills:security-and-hardening`, `security-review`; `security-audit` solo en auditoría completa | `security.md` |
@@ -50,7 +50,7 @@ Al delegar, el `admin` escribe en el encargo: "usa `<skill>`". Si el agente no p
 
 `superpowers:*` (plugin `superpowers@claude-plugins-official`) está instalado; sigue la regla de pesadas. Si choca con `agent-skills:*` en el mismo tipo de tarea, gana `agent-skills:*` (una sola skill por tarea).
 
-Instaladas hoy: `design-taste-frontend`, `security-audit`, `graphify`, `markitdown`, `gsap-*`, `superpowers:*`. Por instalar (las ejecuta el usuario): `apple-design`; comando en `design.md`.
+Instaladas hoy: `design-taste-frontend`, `security-audit`, `graphify`, `markitdown`, `gsap-*`, `superpowers:*`, `apple-design`, `playwright-cli`.
 
 `design-taste-frontend` es de terceros (Snyk: riesgo medio, Socket: 1 alerta): vive por máquina, no en el repo ni en `adopt.sh`. Otra máquina: `npx skills add Leonxlnx/taste-skill`.
 

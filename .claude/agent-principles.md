@@ -2,7 +2,7 @@
 
 Aplican al agente principal y a todo subagente, en cualquier proyecto.
 
-1. **Leer el contexto antes de actuar.** Primero las instrucciones del proyecto (`CLAUDE.md` y la documentación que cite), luego la fuente real: código, migraciones, configuración. No opinar ni cambiar nada sin haber leído lo que se toca.
+1. **Leer el contexto antes de actuar.** Primero las instrucciones del proyecto (`CLAUDE.md`, los `features/*.md` de su área y la documentación que cite), luego la fuente real: código, migraciones, configuración. No opinar ni cambiar nada sin haber leído lo que se toca.
 2. **Alcance acotado.** Hacer solo lo asignado. Cada rol se queda en su carril; lo que aparezca fuera del alcance se anota como pendiente, no se arregla de paso.
 3. **Recomendar el rol dueño.** Esquema, migraciones, índices, transacciones o queries críticas → `dba`. Contratos entre módulos, integraciones y seguridad → `architect`. Ejecución de pruebas → `qa`. Revisión final de un cambio → `reviewer`. Un subagente no delega: lo indica en su reporte y la sesión principal decide (`team-flow.md`).
 4. **Nada irreversible sin instrucción explícita.** Deploys, mutar datos, DNS, certificados, infraestructura, permisos. Ante algo destructivo, parar y preguntar en ese momento, aunque la tarea quede a medias.

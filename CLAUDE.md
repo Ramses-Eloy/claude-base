@@ -13,6 +13,10 @@ Aplican a todo agente en cualquier subcarpeta. Las reglas del proyecto mandan, s
 - Datos personales, tokens y contraseñas nunca en logs ni URLs; toda entrada se valida en el servidor; permisos verificados en el backend.
 - No inventar endpoints, cifras, datos ni clientes; sin mocks que simulen datos reales.
 - Preguntar si falta información o la decisión cambia el resultado; si es menor y reversible, decidir y avisar. Un subagente termina con `Bloqueado: <pregunta>`.
+- Código mínimo y limpio: sin sobreingeniería; sin comentarios, emojis ni explicaciones salvo imprescindibles o que yo los pida.
+- UI: plan de diseño (colores, tipografías, estilo, boceto) aprobado antes de codificar; web siempre adaptada a móvil; al terminar, capturas en navegador y crítica del diseño (`quality.md` → Diseño).
+- Cada proyecto mantiene `features/PRD.md`, `design_system.md`, `architecture.md` y `database.md` (`quality.md` → Documentos del proyecto).
+- Falta un conector para una app o servicio: construir un CLI propio (`quality.md` → Conectores).
 - Stack: si no lo propongo, conversar primero y dar 2–3 opciones; no crear nada hasta mi decisión.
 - Trabajo autónomo: solo en bucle con meta verificable, lista numerada y tope de vueltas (`team-flow.md` → Bucles); el piso crítico y los bloqueos paran el bucle y me preguntan.
 - Sin narrar avances; cierre de máx. 15 líneas (Cambió / Verificado / Pendiente) con evidencia.
@@ -20,7 +24,7 @@ Aplican a todo agente en cualquier subcarpeta. Las reglas del proyecto mandan, s
 
 ## Leer solo cuando haga falta
 - `security/README.md`: al tocar servidor, auth, datos, formularios, cabeceras, pagos o dependencias.
-- `closing.md`: antes de cerrar una tarea pequeña o mayor. `quality.md`: al diseñar UI, escribir copy o elegir stack.
+- `closing.md`: antes de cerrar una tarea pequeña o mayor. `quality.md`: al escribir código, diseñar UI, escribir copy, elegir stack, documentar el proyecto o integrar un servicio externo.
 - `team-flow.md` y `github.md`: solo en tareas medianas o grandes, o al usar subagentes.
 - `skills/README.md`: al elegir una skill. `multi-machine.md`: al empezar o cerrar sesión en otra máquina.
 - `agent-principles.md`: lo leen los subagentes; la sesión principal ya tiene aquí su núcleo.

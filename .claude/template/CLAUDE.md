@@ -19,6 +19,8 @@
 
 Ramas: GitFlow (`.claude/github.md`). Deploy automático desde: <!-- RELLENAR: rama o ninguna -->
 
+Documentos (`features/`): <!-- RELLENAR: cuáles existen de PRD.md, design_system.md, architecture.md, database.md -->
+
 ## Datos sensibles
 
 <!-- RELLENAR: qué datos personales, financieros o secretos maneja; dónde viven; quién puede verlos. Lo que nunca debe salir en logs, URLs ni respuestas. -->

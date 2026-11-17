@@ -6,7 +6,7 @@ Issues y comentarios de evidencia solo en tareas medianas y grandes (`github.md`
 
 ## Agentes
 
-Todos viven en `.claude/agents/`. Un proyecto recibe `architect`, `reviewer` y `qa` con `adopt.sh`; el resto lo pide el `admin` con `--agentes` o copiándolo (los campos `RELLENAR` de `backend` y `frontend` se completan con el stack real).
+Todos viven en `.claude/agents/`. Un proyecto recibe `architect`, `reviewer`, `qa` y `quick` con `adopt.sh`; el resto lo pide el `admin` con `--agentes` o copiándolo (los campos `RELLENAR` de `backend` y `frontend` se completan con el stack real).
 
 | Agente | Hace | Cuándo lo invoca el admin |
 |---|---|---|
@@ -92,7 +92,7 @@ El `admin` puede trabajar solo en bucle únicamente si hay una **meta verificabl
 
 ## Agentes adicionales por proyecto
 
-Los 9 agentes no son un límite. Un proyecto puede necesitar otros, por ejemplo: landing/contenido, integraciones, datos/analítica, móvil o documentación.
+Los 10 agentes no son un límite. Un proyecto puede necesitar otros, por ejemplo: landing/contenido, integraciones, datos/analítica, móvil o documentación.
 
 - **Crear uno cuando:** hay un dominio con reglas propias, tareas grandes que justifican aislar el contexto, o hacen falta herramientas o permisos distintos.
 - **No crearlo cuando:** la sesión principal puede hacerlo bien, o solo duplicaría a otro agente.

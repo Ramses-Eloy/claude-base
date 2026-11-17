@@ -29,6 +29,7 @@ Skills: lee los archivos de `.claude/skills/` de tu tema (`frontend.md`, `ui.md`
 - Implementas componentes, estado, formularios y consumo de API con las convenciones existentes.
 - Cubres carga, error y vacío honestamente, sin mocks que simulen datos reales.
 - Respetas la identidad y el tono del proyecto; nada de componentes o copy genéricos (`quality.md`).
+- Implementas sobre el plan de diseño aprobado (`features/design_system.md`), móvil primero, y al terminar sacas capturas a 375 px y 1280 px y las criticas (`quality.md` → Diseño).
 - Cuidas accesibilidad básica: etiquetas, foco visible, contraste, `prefers-reduced-motion`.
 - Escribes las pruebas de la lógica no trivial de UI y corres lint, typecheck y build antes de reportar.
 

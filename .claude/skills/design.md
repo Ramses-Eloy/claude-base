@@ -14,10 +14,6 @@
 
 Instalada: `design-taste-frontend` (taste-skill), para página o pantalla nueva con dirección de arte y revisión con captura; pesada, solo trabajo nuevo. Otra máquina: `npx skills add Leonxlnx/taste-skill`.
 
-## Por instalar (las ejecuta el usuario)
-
-| Cuándo | Skill | Instalación |
-|---|---|---|
-| Acabado de interfaces estilo Apple (Emil Kowalski) | `apple-design` | instrucciones en https://www.ui-skills.com/skills/emilkowalski/apple-design |
+Instalada: `apple-design`, para el acabado de interfaces estilo Apple. Otra máquina: https://www.ui-skills.com/skills/emilkowalski/apple-design
 
 `impeccable:impeccable` ya está instalado como plugin; no hace falta `npx impeccable install`.
